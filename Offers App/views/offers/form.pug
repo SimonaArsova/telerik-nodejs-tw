@@ -3,6 +3,17 @@ block body
     != messages()
 
     form(action="/offers" method = "POST")
-        input(required type="text" name = "text")
+        label(for="title")
+            |Title:
+        input(required type = "text" name = "title")
+        label(for="Image")
+            |Image:
+        input(required type = "text", name = "image")
+        label(for="duration")
+            |Duration:
+        input(required type = "text", name = "duration")
+        label(for="price")
+            |Price:
+        input(required type = "text", name = "price")
         button.btn-success
             |Save       

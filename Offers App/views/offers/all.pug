@@ -3,4 +3,12 @@ block body
     ul
         each offer in context
             li
-                =offer.text
+                .panel.panel-default.col-md-6
+                    .panel-body
+                        h2
+                            =offer.title
+                        img(src = offer.image)
+                        h4 Duration: 
+                            =offer.duration + " days"
+                        h4 Price: 
+                            =offer.price + " BGN"
