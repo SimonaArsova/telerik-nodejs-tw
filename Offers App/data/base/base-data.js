@@ -7,6 +7,11 @@ class BaseData {
         this.collection = this.db.collection(this.collectionName);
     }
 
+    filterBy(props) {
+        return this.collection.find(props)
+            .toArray();
+    }
+
     getAll() {
         return this.collection.find()
             .toArray()
@@ -32,6 +37,11 @@ class BaseData {
     }
 
     _isModelValid(model) {
+        if (typeof this.validator === 'undefined'||
+            typeof this.validator.isValid !== 'function') {
+                return true;
+            }
+
         return this.validator.isValid(model);
     }
 
