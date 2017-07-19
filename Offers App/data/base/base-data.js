@@ -1,3 +1,5 @@
+const { ObjectID } = require('mongodb');
+
 class BaseData {
     constructor(db, ModelClass, validator) {
         this.db = db;
@@ -35,6 +37,13 @@ class BaseData {
                 return this.ModelClass.toViewModel(model);
             });
     }
+
+    findById(id) {
+        return this.collection.findOne({
+            _id: new ObjectID(id),
+        });
+    }
+
 
     _isModelValid(model) {
         if (typeof this.validator === 'undefined'||
