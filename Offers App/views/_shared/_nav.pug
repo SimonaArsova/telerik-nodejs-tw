@@ -6,26 +6,23 @@ mixin nav()
                 a.nav-btn(href="/")
                     | Home
             li.list-item.dropdown
-                a.nav-btn.dropdown-toggle#nav-btn-toggle-items(href="#")
-                    | Offers
-                ul.dropdown-list.list
-                    li.list-item
-                        a.nav-btn#nav-btn-item-all(href="/offers")
-                            | All offers
-                    li.list-item
-                        a.nav-btn#nav-btn-item-add(href="/offers/form")
-                            | Add offer        
+                a.nav-btn.dropdown-toggle#nav-btn-toggle-items(href="/offers")
+                    | All offers
+                    
             if user
-                li.list-item.dropdown
+                li.list-item.dropdown.right
                     a.nav-btn.dropdown-toggle#nav-btn-toggle-items(href="#")
                         =user.username
                     ul.dropdown-list.list
+                        li.list-item
+                            a.nav-btn#nav-btn-item-add(href="/offers/form")
+                                | Add offer   
                         li.list-item
                             form(action="/auth/sign-out" method="post")
                                 button.nav-btn
                                     | Sign Out
             else
-                li.list-item.dropdown
+                li.list-item.dropdown.right
                     a.nav-btn.dropdown-toggle#nav-btn-toggle-items(href="#")
                         | User
                     ul.dropdown-list.list

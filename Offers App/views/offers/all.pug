@@ -1,9 +1,9 @@
 extends ../_shared/_master
 block body
-    ul
+    ul.offers-list
         each offer in context
             li
-                .panel.panel-default.col-md-6
+                .panel.panel-default.col-md-6.offer
                     .panel-body
                         h2
                             =offer.title
