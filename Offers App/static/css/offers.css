@@ -1,25 +1,43 @@
 .offers-list {
     list-style-type: none;
-    margin: 0px;
-    padding:5px;
     text-align: left;
 }
 
 .offer {
-    height: 450px;
-    margin:5px;
+    height: 300px;
+}
+
+.panel {
+    padding:0px;
+    position: relative;
+    margin: 10px;
+    
 }
 
 .panel-body {
     padding:0px;
+    margin: 0px;
 }
 
 .img-thumbnail {
-    height: 250px;
+    height: 220px;
+    width:100%;
+    margin:0px;
+    padding:0px;
 }
 
 .title {
     padding: 10px;
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
+    position: absolute;
+    color: white;
 }
+ h4 {
+     margin-left: 10px;
+ }
+
+.all-offers-body {
+     display: flex;
+     justify-content: center;
+ }

@@ -1,14 +1,15 @@
 extends ../_shared/_master
 block body
-    ul.offers-list
-        each offer in context
-            li
-                .panel.panel-default.col-md-3.offer
-                    .panel-body
-                        .title
-                            =offer.title
-                        img.img-thumbnail(src = offer.image)
-                        h4 Duration: 
-                            =offer.duration + " days"
-                        h4 Price: 
-                            =offer.price + " BGN"
+    .all-offers-body
+        ul.offers-list
+            each offer in context
+                li
+                    .panel.panel-default.col-md-3.offer
+                        .panel-body
+                            .title
+                                =offer.title
+                            img.img-thumbnail(src = offer.image)
+                            h4 Duration: 
+                                =offer.duration + " days"
+                            h4 Price: 
+                                =offer.price + " BGN"

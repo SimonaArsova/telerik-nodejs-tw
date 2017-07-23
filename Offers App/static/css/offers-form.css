@@ -1,0 +1,29 @@
+p {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+label{
+    padding: 5px;
+    min-width: 80px;
+    
+}
+
+.btn-info {
+    border-radius: 10px;
+}
+
+.offers-body{
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    padding: 10px;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

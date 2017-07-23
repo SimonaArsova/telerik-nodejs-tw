@@ -1,19 +1,26 @@
 extends ../_shared/_master
 block body
     != messages()
-
-    form(action="/offers" method = "POST")
-        label(for="title")
-            |Title:
-        input(required type = "text" name = "title")
-        label(for="Image")
-            |Image:
-        input(required type = "text", name = "image")
-        label(for="duration")
-            |Duration:
-        input(required type = "text", name = "duration")
-        label(for="price")
-            |Price:
-        input(required type = "text", name = "price")
-        button.btn-success
-            |Save       
+    .offers-body
+        .panel.panel-default.col-md-3.offer
+            .panel-body
+                form(action="/offers" method = "POST")
+                    p
+                        label(for="title")
+                            |Title:
+                        input(required type = "text" name = "title")
+                    p
+                        label(for="Image")
+                            |Image:
+                        input(required type = "text", name = "image")
+                    p
+                        label(for="duration")
+                            |Duration:
+                        input(required type = "text", name = "duration")
+                    p
+                        label(for="price")
+                            |Price:
+                        input(required type = "text", name = "price")
+                    p
+                        button.btn-info
+                            |Save       
