@@ -3,11 +3,11 @@ block body
     ul.offers-list
         each offer in context
             li
-                .panel.panel-default.col-md-6.offer
+                .panel.panel-default.col-md-3.offer
                     .panel-body
-                        h2
+                        .title
                             =offer.title
-                        img(src = offer.image)
+                        img.img-thumbnail(src = offer.image)
                         h4 Duration: 
                             =offer.duration + " days"
                         h4 Price: 

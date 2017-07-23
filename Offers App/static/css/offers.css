@@ -2,8 +2,24 @@
     list-style-type: none;
     margin: 0px;
     padding:5px;
+    text-align: left;
 }
 
 .offer {
-    height: 400px;
+    height: 450px;
+    margin:5px;
+}
+
+.panel-body {
+    padding:0px;
+}
+
+.img-thumbnail {
+    height: 250px;
+}
+
+.title {
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
 }
