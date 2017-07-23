@@ -1,4 +1,4 @@
-p {
+p, .img{
     padding: 5px;
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@ p {
 
 label{
     padding: 5px;
-    min-width: 80px;
+    min-width: 100px;
     
 }
 
@@ -14,7 +14,7 @@ label{
     border-radius: 10px;
 }
 
-.offers-body{
+.offers-body.form{
     display: flex;
     justify-content: center;
 }
@@ -26,4 +26,9 @@ form {
 input {
     border-radius: 5px;
     border: 1px solid #ccc;
+    width:70%;
+}
+
+.description {
+    height: 250px;
 }

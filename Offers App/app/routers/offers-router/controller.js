@@ -8,6 +8,16 @@ const init = (data) => {
                     });
                 });
         },
+        getOfferById(req, res) {
+            const id = req.params.id;
+            return data.offers.findById(id)
+                .then((offer) => {
+                    return res.render('offers/description',
+                        {
+                            context: offer,
+                        });
+                });
+        },
     };
 
     return controller;

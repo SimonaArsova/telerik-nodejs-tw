@@ -16,12 +16,16 @@ const attachTo = (app, data) => {
 
         return data.offers.create(offer)
             .then((dbOffer) => {
-                return res.redirect('/offers' + dbOffer.id);
+                return res.redirect('/offers/' + dbOffer.id);
             })
             .catch((err) => {
                 req.flash('error', err);
                 return res.redirect('/offers/form');
             });
+    });
+
+    app.get('/offers/:id', (req, res) => {
+        return controller.getOfferById(req, res);
     });
 };
 
