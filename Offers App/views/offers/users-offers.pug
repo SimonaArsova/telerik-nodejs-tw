@@ -3,9 +3,19 @@ block body
     if context.length        
         ul
             each offer in context
-                li
-                    a(href="/offers/" + offers._id)
-                        =offer.title
+                .panel.panel-default.col-md-5
+                    .panel-body
+                        li
+                            .my-offer
+                                a(href="/offers/" + offer._id)
+                                    img(src=offer.image1, alt="img1").min.img-thumbnail
+                                    h3
+                                        =offer.title
+                                    .info
+                                        =offer.price + " BGN" +", " + offer.duration + " days"
+                                    form(action="/offers/" + offer._id method = "POST")
+                                        button.btn.btn-info.remove-offer-btn
+                                            |Remove offer
     else
         p
             | No offers yet...

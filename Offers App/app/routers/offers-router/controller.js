@@ -27,7 +27,6 @@ class OffersController {
 
     getOfferById(req, res) {
         const id = req.params.id;
-        console.log(req.params);
         return this.data.offers.findById(id)
             .then((offer) => {
                 return res.render('offers/description',

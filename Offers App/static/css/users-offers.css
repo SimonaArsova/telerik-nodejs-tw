@@ -1,0 +1,30 @@
+img.min {
+    width: 180px;
+    height: 140px;
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    float:left;
+}
+
+.my-offer{
+    padding:5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.info {
+    color: #333;
+    width:400px;
+    
+}
+
+li{
+    list-style: none;
+}
+
+.remove-offer-btn{
+    vertical-align: middle;
+    margin: 5px;
+}
