@@ -3,7 +3,7 @@ block body
     .all-offers-body
         ul.offers-list
             each offer in context
-                a(href="/offers/" + offer.id)
+                a(href="/offers/" + offer._id)
                     li
                         .panel.panel-default.col-md-3.offer
                             .panel-body.offer

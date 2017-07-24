@@ -1,0 +1,11 @@
+extends ../_shared/_master
+block body
+    if context.length        
+        ul
+            each offer in context
+                li
+                    a(href="/offers/" + offers._id)
+                        =offer.title
+    else
+        p
+            | No offers yet...

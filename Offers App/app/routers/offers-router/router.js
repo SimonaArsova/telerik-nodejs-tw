@@ -6,22 +6,15 @@ const attachTo = (app, data) => {
     });
 
     app.get('/offers/form', (req, res) => {
-        return res.render('offers/form');
+        return controller.getForm(req, res);
+    });
+
+    app.get('/offers/my-offers', (req, res) => {
+        return controller.getUsersOffers(req, res);
     });
 
     app.post('/offers', (req, res) => {
-        const offer = req.body;
-
-        // validation
-
-        return data.offers.create(offer)
-            .then((dbOffer) => {
-                return res.redirect('/offers/' + dbOffer.id);
-            })
-            .catch((err) => {
-                req.flash('error', err);
-                return res.redirect('/offers/form');
-            });
+        return controller.create(req, res);
     });
 
     app.get('/offers/:id', (req, res) => {

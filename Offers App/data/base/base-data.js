@@ -44,6 +44,12 @@ class BaseData {
         });
     }
 
+    updateById(model) {
+        return this.collection.updateOne({
+            _id: model._id,
+        }, model);
+    }
+
 
     _isModelValid(model) {
         if (typeof this.validator === 'undefined'||
