@@ -5,5 +5,7 @@ Promise.resolve()
     .then((db) => require('./data').init(db))
     .then((data) => require('./app').init(data))
     .then((app) =>{
-            app.listen(config.port, () => console.log('Start server'));
+            app.listen(config.port, () => console.log(
+                'Server listnening at: ' + config.port)
+            );
     });

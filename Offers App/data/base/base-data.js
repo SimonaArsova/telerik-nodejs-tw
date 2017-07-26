@@ -44,6 +44,12 @@ class BaseData {
         });
     }
 
+    removeById(id) {
+        return this.collection.remove({
+            _id: id,
+        });
+    }
+
     updateById(model) {
         return this.collection.updateOne({
             _id: model._id,

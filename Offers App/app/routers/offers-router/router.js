@@ -20,6 +20,10 @@ const attachTo = (app, data) => {
     app.get('/offers/:id', (req, res) => {
         return controller.getOfferById(req, res);
     });
+
+    app.delete('/offers/:id', (req, res) => {
+        return controller.deleteOfferById(req, res);
+    });
 };
 
 module.exports = { attachTo };

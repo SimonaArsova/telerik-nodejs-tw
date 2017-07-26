@@ -36,6 +36,20 @@ class OffersController {
             });
     }
 
+    deleteOfferById(req, res) {
+        const id = req.params.id;
+        return this.data.offers.findById(id)
+            .then((offer) => {
+                return Promise
+                    .all([
+                        this.data.users.removeOfferByOfferId(
+                            req.user.username, id
+                        ),
+                        // this.data.offers.removeById(offer),
+                    ]);
+            });
+    }
+
     create(req, res) {
         const offer = req.body;
         const user = req.user;
@@ -59,6 +73,7 @@ class OffersController {
                     price: dbOffer.price,
                     image1: dbOffer.image1,
                     image2: dbOffer.image2,
+                    image3: dbOffer.image3,
                     description: dbOffer.description,
                 });
 

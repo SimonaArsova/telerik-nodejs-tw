@@ -25,6 +25,14 @@ class UsersData extends BaseData {
                 return true;
             });
     }
+
+    removeOfferByOfferId(username, id) {
+        return this.collection.update(
+            { username: username },
+            { $pull: { offers: { $in: [{ _id: id }] } } },
+            { multi: true },
+        );
+    }
 }
 
 module.exports = UsersData;
