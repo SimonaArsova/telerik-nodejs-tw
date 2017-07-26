@@ -45,7 +45,7 @@ class OffersController {
                         this.data.users.removeOfferByOfferId(
                             req.user.username, id
                         ),
-                        // this.data.offers.removeById(offer),
+                        this.data.offers.removeById(offer),
                     ]);
             });
     }

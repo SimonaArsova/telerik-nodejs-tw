@@ -44,10 +44,10 @@ class BaseData {
         });
     }
 
-    removeById(id) {
+    removeById(model) {
         return this.collection.remove({
-            _id: id,
-        });
+            _id: model._id,
+        }, model);
     }
 
     updateById(model) {

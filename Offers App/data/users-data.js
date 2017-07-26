@@ -1,5 +1,6 @@
 const BaseData = require('./base/base-data');
 const User = require('../models/user-model');
+const { ObjectID } = require('mongodb');
 
 class UsersData extends BaseData {
     constructor(db) {
@@ -26,11 +27,11 @@ class UsersData extends BaseData {
             });
     }
 
-    removeOfferByOfferId(username, id) {
+   removeOfferByOfferId(username, id) {
         return this.collection.update(
-            { username: username },
-            { $pull: { offers: { $in: [{ _id: id }] } } },
-            { multi: true },
+            { },
+            { $pull: { offers: { _id: new ObjectID(id) } } },
+            { multi: true }
         );
     }
 }
