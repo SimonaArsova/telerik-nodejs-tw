@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const expressValidator = require('express-validator');
 
 const init = (data) => {
     const app = express();
@@ -14,6 +15,8 @@ const init = (data) => {
         res.locals.messages = require('express-messages')(req, res);
         next();
     });
+
+    app.use(expressValidator());
 
     require('./routers')
     .attachTo(app, data);

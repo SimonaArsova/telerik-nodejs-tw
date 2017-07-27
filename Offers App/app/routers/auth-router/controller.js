@@ -17,25 +17,47 @@ class AuthController {
     signUp(req, res) {
         const bodyUser = req.body;
 
-        this.data.users.findByUsername(bodyUser.username)
-            .then((dbUser) => {
-                if (dbUser) {
-                    throw new Error('User already exists');
+        req.assert('username',
+            'Username must be between 6 and 25 symbols.').len(6, 25);
+        req.assert('password',
+            'Passsword must be at least 6 symbols.').len(6);
+        req.assert('password-confirm', 'Passwords do not match')
+            .equals(bodyUser.password);
+        req.assert('email', 'Email is not valid').isEmail();
+
+        return req.getValidationResult()
+            .then((result) => {
+                if (!result.isEmpty()) {
+                    return res.status(400).render('auth/sign-up', {
+                        context: bodyUser,
+                        errors: result.array(),
+                    });
                 }
 
-                return this.data.users.create(bodyUser);
-            })
-            .then((dbUser) => {
-                return res.redirect('/auth/sign-in');
-            })
-            .catch((err) => {
-                req.flash('error', err);
+                return this.data.users.findByUsername(bodyUser.username)
+                    .then((dbUser) => {
+                        if (dbUser) {
+                            const errors = [];
+                            errors.push({
+                                msg: `User with that 
+                                    username already exists.` });
+                            return res.render('auth/sign-up', {
+                                context: bodyUser,
+                                errors: errors,
+                            });
+                        }
+
+                        return this.data.users.create(bodyUser);
+                    })
+                    .then((dbUser) => {
+                        return res.redirect('/auth/sign-in');
+                    });
             });
     }
 }
 
-const init = (data) => {
-    return new AuthController(data);
-};
+    const init = (data) => {
+        return new AuthController(data);
+    };
 
 module.exports = { init };
