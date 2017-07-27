@@ -7,13 +7,13 @@ $(document).ready(() => {
                 url: `offers/search?title=${input}`,
                 method: 'post',
             })
-            // .then((response) => {
-            //          console.log(response);
+            .then((response) => {
+                     console.log('response');
                     //  $('.search-results').html(response);
                     //  window.history.pushState(
-                        //  'Search', 'Title', `/offers/search?title=${input}`
-                        // );
-                //  });
+                    //      'Search', 'Title', `/offers/search?title=${input}`
+                    //     );
+                 });
         });
     });
 });

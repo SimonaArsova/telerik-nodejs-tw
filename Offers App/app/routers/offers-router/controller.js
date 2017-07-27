@@ -100,7 +100,8 @@ class OffersController {
         console.log(title);
         return this.data.offers.getByTitle(title)
             .then((offers)=>{
-                return res.render('offers/all', {
+                console.log(offers);
+                return res.render('offers/search', {
                     context: offers || [],
                 });
             });

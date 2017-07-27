@@ -1,0 +1,16 @@
+extends ../_shared/_master
+block body
+    .all-offers-body
+        ul.offers-list
+            each offer in context
+                a(href="/offers/" + offer._id)
+                    li
+                        .panel.panel-default.col-md-3.offer
+                            .panel-body.offer
+                                .title
+                                    =offer.title
+                                img.img-thumbnail(src = offer.image1)
+                                h4 Duration: 
+                                    =offer.duration + " days"
+                                h4 Price: 
+                                    =offer.price + " BGN"
