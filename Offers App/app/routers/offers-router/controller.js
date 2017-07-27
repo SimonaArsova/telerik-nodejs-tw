@@ -96,11 +96,9 @@ class OffersController {
     }
 
     searchOfferByTitle(req, res) {
-        const title = req.query.title;
-        console.log(title);
+        const title = req.body.value;
         return this.data.offers.getByTitle(title)
-            .then((offers)=>{
-                console.log(offers);
+            .then((offers) => {
                 return res.render('offers/search', {
                     context: offers || [],
                 });

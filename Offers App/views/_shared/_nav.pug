@@ -6,9 +6,9 @@ mixin nav()
                     a(href='/') Home
                 li
                     a(href='/offers') All offers
-            form.navbar-form.navbar-left
+            form.navbar-form.navbar-left(action="/offers/search", method="POST")
                 .form-group
-                    input.form-control.search-input(type='text', placeholder='Search')
+                    input.form-control.search-input(type='text', placeholder='Search' name='value')
                 button.btn.btn-default#search-btn(type='submit') Submit       
 
             ul.nav.navbar-nav.navbar-right
