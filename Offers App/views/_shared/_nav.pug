@@ -6,12 +6,10 @@ mixin nav()
                     a(href='/') Home
                 li
                     a(href='/offers') All offers
-                li
-                    a(href="/search") Search
-            //- form.navbar-form.navbar-left
-            //-     .form-group
-            //-         input.form-control.search-input(type='text', placeholder='Search')
-            //-     button.btn.btn-default.search-btn(type='submit') Submit       
+            form.navbar-form.navbar-left
+                .form-group
+                    input.form-control.search-input(type='text', placeholder='Search')
+                button.btn.btn-default#search-btn(type='submit') Submit       
 
             ul.nav.navbar-nav.navbar-right
                 if user

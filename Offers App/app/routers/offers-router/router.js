@@ -25,11 +25,7 @@ const attachTo = (app, data) => {
         return controller.deleteOfferById(req, res);
     });
 
-     app.get('/search', (req, res) =>{
-        return res.render('offers/search');
-     });
-
-    app.get('/offers/search?title', (req, res) =>{
+    app.post('/offers/search', (req, res) =>{
        return controller.searchOfferByTitle(req, res);
     });
 };

@@ -96,12 +96,11 @@ class OffersController {
     }
 
     searchOfferByTitle(req, res) {
-        console.log('here');
         const title = req.query.title;
         console.log(title);
         return this.data.offers.getByTitle(title)
             .then((offers)=>{
-                return res.render('/offers/search', {
+                return res.render('offers/all', {
                     context: offers || [],
                 });
             });
