@@ -46,7 +46,10 @@ class OffersController {
                             req.user.username, id
                         ),
                         this.data.offers.removeById(offer),
-                    ]);
+                    ])
+                    .then(() => {
+                        return res.redirect('/offers');
+                    });
             });
     }
 
@@ -89,6 +92,18 @@ class OffersController {
             .catch((err) => {
                 req.flash('error', err);
                 return res.redirect('/offers/form');
+            });
+    }
+
+    searchOfferByTitle(req, res) {
+        console.log('here');
+        const title = req.query.title;
+        console.log(title);
+        return this.data.offers.getByTitle(title)
+            .then((offers)=>{
+                return res.render('/offers/search', {
+                    context: offers || [],
+                });
             });
     }
 }

@@ -1,0 +1,22 @@
+extends ../_shared/_master
+block body
+    h1
+        | Search:
+        .input-group
+            input#pattern.form-control(type='text', placeholder='Search', name='pattern')
+            #search-btn.input-group-btn
+                button.btn.btn-default
+                    i.glyphicon.glyphicon-search
+    div.search-results
+        if offers
+            iv
+               if context.length > 0
+                   each offer in offers
+                       div(class="col-md-3 col-sm-6 hero-feature")
+                           div(class="thumbnail")
+                               img(src=event.photo alt="")
+                               div(class="caption")
+                                   h3=offer.title
+               else
+                   h3
+                       | No events were found

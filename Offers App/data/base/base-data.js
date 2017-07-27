@@ -56,6 +56,12 @@ class BaseData {
         }, model);
     }
 
+     getByTitle(title) {
+        return this.collection.find({
+            'title': { $regex: title, $options: 'i' },
+        }).toArray();
+    }
+
 
     _isModelValid(model) {
         if (typeof this.validator === 'undefined'||
