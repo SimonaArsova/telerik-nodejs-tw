@@ -3,6 +3,15 @@ class OffersController {
         this.data = data;
     }
 
+    getHome(req, res) {
+        return this.data.offers.findLastOffers()
+            .then((offers) => {
+                return res.render('home', {
+                    context: offers || [],
+                });
+            });
+    }
+
     getAll(req, res) {
         return this.data.offers.getAll()
             .then((offers) => {

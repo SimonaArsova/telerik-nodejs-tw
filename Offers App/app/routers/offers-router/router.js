@@ -2,6 +2,10 @@ const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
     const errorsController = require('../../errors-controller')();
 
+    app.get('/', (req, res) =>{
+        return controller.getHome(req, res);
+    });
+
     app.get('/offers', (req, res) => {
         return controller.getAll(req, res);
     });
@@ -31,6 +35,7 @@ const attachTo = (app, data) => {
     });
 
     app.get('/error', errorsController.show);
+
 };
 
 module.exports = { attachTo };

@@ -9,6 +9,14 @@ class BaseData {
         this.collection = this.db.collection(this.collectionName);
     }
 
+    findLastOffers() {
+        return this.collection
+            .find()
+            .sort({ $natural: -1 })
+            .limit(3)
+            .toArray();
+    }
+
     filterBy(props) {
         return this.collection.find(props)
             .toArray();
@@ -56,7 +64,7 @@ class BaseData {
         }, model);
     }
 
-     getByTitle(title) {
+    getByTitle(title) {
         return this.collection.find({
             'title': { $regex: title, $options: 'i' },
         }).toArray();
@@ -64,10 +72,10 @@ class BaseData {
 
 
     _isModelValid(model) {
-        if (typeof this.validator === 'undefined'||
+        if (typeof this.validator === 'undefined' ||
             typeof this.validator.isValid !== 'function') {
-                return true;
-            }
+            return true;
+        }
 
         return this.validator.isValid(model);
     }

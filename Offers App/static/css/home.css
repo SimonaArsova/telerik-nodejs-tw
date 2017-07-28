@@ -1,0 +1,38 @@
+.carousel-image{
+    object-fit: scale-down;
+    object-position: center; /* Center the image within the element */
+    position: static;
+}
+
+#myCarousel{
+    height: 450px;
+    overflow: hidden;
+}
+
+#myCarousel:hover{
+    filter: brightness(90%);
+}
+
+.carousel-title {
+    color: white;
+    z-index: 1000;
+    float: left;
+    position: absolute;
+    font-size: 32px;
+    padding: 30px;
+    
+}
+
+.page-title{
+    padding: 10px;
+}
+
+.find-best{
+    padding:15px;
+    margin:20px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
