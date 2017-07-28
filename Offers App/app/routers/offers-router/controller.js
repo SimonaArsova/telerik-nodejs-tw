@@ -62,7 +62,7 @@ class OffersController {
     create(req, res) {
         const offer = req.body;
         const user = req.user;
-
+        console.log(offer);
 
         offer.user = {
             id: user._id,
