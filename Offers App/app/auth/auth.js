@@ -7,15 +7,12 @@ const config = require('../../config');
 
 const applyTo = (app, data) => {
     passport.use(new Strategy((username, password, done) => {
-        data.users.checkPassword(username, password)
-            .then(() => {
-                return data.users.findByUsername(username);
-            })
-            .then((user) => {
-                done(null, user);
-            })
-            .catch((err) => {
-                done(err);
+        data.users.login(username, password)
+          .then((user) => {
+                if (user) {
+                    return done(null, user);
+                }
+                return done(null, false);
             });
     }));
 
