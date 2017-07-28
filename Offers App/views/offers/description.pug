@@ -35,3 +35,21 @@ block body
             h2
                 |Duration: 
                 =context.duration + " days"
+        div.comments
+            h2
+                |Comments:
+        if context.comments
+            each comment in context.comments
+                div
+                    =context.user.username
+                div
+                    =comment
+        button.btn.btn-info.comment-btn
+            |Add comment
+        div.comment
+            form(action="/offers/"+context._id method = "POST")
+                label(for="comment")
+                    |Comment:
+                input(required type = "text" name = "comment")
+                button.btn.btn-info
+                            |Save   

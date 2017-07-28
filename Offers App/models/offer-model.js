@@ -1,8 +1,7 @@
 class Offer {
     static isValid(model) {
         return typeof model !== 'undefined' &&
-            typeof model.title === 'string' &&
-            model.title.length > 3;
+            typeof model.title === 'string'
     }
 
     get id() {

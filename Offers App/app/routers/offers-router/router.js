@@ -26,6 +26,10 @@ const attachTo = (app, data) => {
         return controller.getOfferById(req, res);
     });
 
+    app.post('/offers/:id', (req, res) => {
+        return controller.addComment(req, res);
+    });
+
     app.delete('/offers/:id', (req, res) => {
         return controller.deleteOfferById(req, res);
     });

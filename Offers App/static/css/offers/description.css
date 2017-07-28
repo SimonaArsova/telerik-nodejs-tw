@@ -15,6 +15,10 @@ img{
     object-position: center; /* Center the image within the element */
 }
 
-.description, .price, .duration{
+.description, .price, .duration, .comments{
     padding:10px;
+}
+
+.comment{
+    display: none;
 }

@@ -113,6 +113,21 @@ class OffersController {
                 });
             });
     }
+
+    addComment(req, res) {
+        const id = req.params.id;
+        const comment = req.body.comment;
+
+        return this.data.offers.findById(id)
+            .then((offer) => {
+                offer.comments = offer.comments || [];
+                offer.comments.push(comment);
+                return this.data.offers.updateById(offer)
+                    .then(() => {
+                        return res.redirect('/offers/'+ id);
+                    });
+            });
+    }
 }
 
 const init = (data) => {
