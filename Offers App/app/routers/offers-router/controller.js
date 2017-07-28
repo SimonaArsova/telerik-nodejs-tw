@@ -55,10 +55,7 @@ class OffersController {
                             req.user.username, id
                         ),
                         this.data.offers.removeById(offer),
-                    ])
-                    .then(() => {
-                        return res.redirect('/offers');
-                    });
+                    ]);
             });
     }
 
@@ -81,12 +78,11 @@ class OffersController {
                 user.offers.push({
                     _id: dbOffer._id,
                     title: dbOffer.title,
-                    duration: dbOffer.duration,
-                    price: dbOffer.price,
                     image1: dbOffer.image1,
                     image2: dbOffer.image2,
                     image3: dbOffer.image3,
                     description: dbOffer.description,
+                    rating: dbOffer.rating,
                 });
 
                 return Promise.all([

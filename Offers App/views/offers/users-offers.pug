@@ -11,8 +11,9 @@ block body
                                     img(src=offer.image1, alt="img1").min.img-thumbnail
                                     h3
                                         =offer.title
-                                    .info
-                                        =offer.price + " BGN" +", " + offer.duration + " days"
+                                    h3.info
+                                        =offer.rating
+                                        span.glyphicon.glyphicon-star
                                 button.btn.btn-info.remove-offer-btn
                                     |Remove offer
     else

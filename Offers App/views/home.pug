@@ -1,7 +1,7 @@
 extends _shared/_master
 block body
     h1.page-title
-        |Resently uploaded
+        |Recently visited
     div.container.carousel-container
         #myCarousel.carousel.slide(data-ride='carousel')
             ol.carousel-indicators
@@ -31,5 +31,5 @@ block body
                         span.glyphicon.glyphicon-chevron-right
                         span.sr-only Next
 
-    a.find-best.btn.btn-warning(href='/offers')
+    a.find-best.btn.btn-info(href='/offers')
         |Find the best place for your summer here

@@ -12,9 +12,6 @@
     object-position: center;
 }
 
-#myCarousel:hover{
-}
-
 .carousel-title {
     color: white;
     z-index: 1000;

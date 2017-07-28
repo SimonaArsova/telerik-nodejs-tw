@@ -26,5 +26,8 @@ input {
 }
 
 .description {
-    height: 250px;
+    overflow: auto;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

@@ -10,12 +10,20 @@
     padding: 0px;
 }
 
-img{
-    object-fit: cover; /* Do not scale the image */
-    object-position: center; /* Center the image within the element */
+#myCarousel{
+    height: 550px;
+    overflow: hidden;
+    object-fit: fill;
+    object-position: center;
 }
 
-.description, .price, .duration, .comments{
+img{
+    object-fit: cover;
+    object-position: center; /* Center the image within the element */
+    width: 100%;
+}
+
+.descr, .rating, .comments{
     padding:10px;
 }
 

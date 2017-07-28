@@ -12,29 +12,29 @@ block body
             .carousel-inner
                     .item.active
                         img(src = context.image1, alt='img1')
-                    .item
-                        img(src = context.image2, alt='img2')
-                    .item
-                        img(src = context.image3, alt='img3')        
+                    if context.image2
+                        .item
+                            img(src = context.image2, alt='img2')
+                    if context.image3
+                        .item
+                            img(src = context.image3, alt='img3')        
                     a.left.carousel-control(href='#myCarousel', data-slide='prev')
                         span.glyphicon.glyphicon-chevron-left
                         span.sr-only Previous
                     a.right.carousel-control(href='#myCarousel', data-slide='next')
                         span.glyphicon.glyphicon-chevron-right
                         span.sr-only Next
-        div.description
+        div.descr
             h2
                 |Description: 
             h4
                 =context.description
-        div.price
+        div.rating
             h2
-                |Price: 
-                =context.price + " BGN"
-        div.duration
-            h2
-                |Duration: 
-                =context.duration + " days"
+                |Rating: 
+            h4
+                =context.rating + " " 
+                span.glyphicon.glyphicon-star
         div.comments
             h2
                 |Comments:
