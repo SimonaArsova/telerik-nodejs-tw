@@ -30,3 +30,26 @@ img{
 .comment{
     display: none;
 }
+
+.user, .user-comment {
+    padding:10px;
+    display: inline-block;
+    margin: 5px;
+}
+
+.user {
+    color: #76bde9;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.user-comment {
+    background-color: aliceblue;
+    border: 1px solid lightskyblue;
+    border-radius: 8px;
+    box-shadow: 2px 2px lightskyblue;
+}
+
+.comment-btn {
+    margin: 10px;
+}

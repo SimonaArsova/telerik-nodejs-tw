@@ -41,11 +41,13 @@ block body
         if context.comments
             each comment in context.comments
                 div
-                    =context.user.username
-                div
-                    =comment
-        button.btn.btn-info.comment-btn
-            |Add comment
+                    div.user
+                        =context.user.username + ":"
+                    div.user-comment
+                        =comment
+        div
+            button.btn.btn-info.comment-btn
+                |Add comment
         div.comment
             form(action="/offers/"+context._id method = "POST")
                 label(for="comment")

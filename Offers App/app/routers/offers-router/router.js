@@ -39,7 +39,6 @@ const attachTo = (app, data) => {
     });
 
     app.get('/error', errorsController.show);
-
 };
 
 module.exports = { attachTo };
