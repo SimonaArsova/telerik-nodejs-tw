@@ -63,39 +63,58 @@ class OffersController {
         const offer = req.body;
         const user = req.user;
 
-        offer.user = {
-            id: user._id,
-            username: user.username,
-        };
+        req.assert('title',
+            'Title must be between 2 and 15 symbols.').len(2, 15);
+        req.assert('image1',
+            'Image link is required.').notEmpty();
+        req.assert('description',
+            'Description is required.').notEmpty();
+        req.assert('rating',
+            'Rating must be a number between 1 and 5.').notEmpty().isInt();
 
-        return Promise
-            .all([
-                this.data.offers.create(offer),
-            ])
-            .then(([dbOffer]) => {
-                user.offers = user.offers || [];
-                user.offers.push({
-                    _id: dbOffer._id,
-                    title: dbOffer.title,
-                    image1: dbOffer.image1,
-                    image2: dbOffer.image2,
-                    image3: dbOffer.image3,
-                    description: dbOffer.description,
-                    rating: dbOffer.rating,
-                });
-
-                return Promise.all([
-                    this.data.offers.updateById(dbOffer),
-                    this.data.users.updateById(user),
-                ])
-                    .then(() => {
-                        return res.redirect('/offers/' + dbOffer._id);
+        return req.getValidationResult()
+            .then((result) => {
+                if (!result.isEmpty()) {
+                    return res.status(400).render('offers/form', {
+                        context: offer,
+                        errors: result.array(),
                     });
-            })
+                }
 
-            .catch((err) => {
-                req.flash('error', err);
-                return res.redirect('/offers/form');
+                offer.user = {
+                    id: user._id,
+                    username: user.username,
+                };
+
+                return Promise
+                    .all([
+                        this.data.offers.create(offer),
+                    ])
+                    .then(([dbOffer]) => {
+                        user.offers = user.offers || [];
+                        user.offers.push({
+                            _id: dbOffer._id,
+                            title: dbOffer.title,
+                            image1: dbOffer.image1,
+                            image2: dbOffer.image2,
+                            image3: dbOffer.image3,
+                            description: dbOffer.description,
+                            rating: dbOffer.rating,
+                        });
+
+                        return Promise.all([
+                            this.data.offers.updateById(dbOffer),
+                            this.data.users.updateById(user),
+                        ])
+                            .then(() => {
+                                return res.redirect('/offers/' + dbOffer._id);
+                            });
+                    })
+
+                    .catch((err) => {
+                        req.flash('error', err);
+                        return res.redirect('/offers/form');
+                    });
             });
     }
 
@@ -119,7 +138,7 @@ class OffersController {
                 offer.comments.push(comment);
                 return this.data.offers.updateById(offer)
                     .then(() => {
-                        return res.redirect('/offers/'+ id);
+                        return res.redirect('/offers/' + id);
                     });
             });
     }

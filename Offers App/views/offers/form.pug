@@ -1,6 +1,6 @@
 extends ../_shared/_master
 block body
-    != messages()
+    include ../errors/all
     .offers-body.form
         .panel.panel-default.col-md-6
             .panel-body.form
@@ -27,8 +27,7 @@ block body
                     p
                         label(for="rating")
                             |Rating:
-                        input(required list="rating" name="rating")
-                        datalist(id="rating")
+                        select(id="rating" name = "rating")
                             option(value='1') 1
                             option(value='2') 2
                             option(value='3') 3
