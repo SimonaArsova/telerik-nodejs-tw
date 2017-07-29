@@ -29,7 +29,7 @@ const attachTo = (app, data) => {
         return controller.addComment(req, res);
     });
 
-    app.delete('/offers/:id', (req, res) => {
+    app.delete('/api/offers/:id', (req, res) => {
         return controller.deleteOfferById(req, res);
     });
 

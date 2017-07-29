@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Offers App\app\routers\offers-router\controller.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">Offers App/app/routers/offers-router/</a> controller.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">34.09% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>15/44</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">12.5% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">34.09% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>15/44</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">class OffersController {
+    constructor(data) {
+        this.data = data;
+    }
+&nbsp;
+    getHome(req, res) {
+        return this.data.offers.findLastOffers()
+            .then((offers) =&gt; {
+                return res.render('home', {
+                    context: offers || <span class="branch-1 cbranch-no" title="branch not covered" >[],</span>
+                });
+            });
+    }
+&nbsp;
+    getAll(req, res) {
+        return this.data.offers.getAll()
+            .then((offers) =&gt; {
+                return res.render('offers/all', {
+                    context: offers || <span class="branch-1 cbranch-no" title="branch not covered" >[],</span>
+                });
+            });
+    }
+&nbsp;
+    getUsersOffers<span class="fstat-no" title="function not covered" >(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >        return res.render('offers/users-offers', {</span>
+            context: req.user.offers || [],
+        });
+    }
+&nbsp;
+    getForm(req, res) {
+        return Promise.resolve()
+            .then(() =&gt; {
+                return res.render('offers/form');
+            });
+    }
+&nbsp;
+    getOfferById(req, res) {
+        const id = req.params.id;
+        return this.data.offers.findById(id)
+            .then((offer) =&gt; {
+<span class="cstat-no" title="statement not covered" >                return res.render('offers/description',</span>
+                    {
+                        context: offer || [],
+                    });
+            });
+    }
+&nbsp;
+    deleteOfferById<span class="fstat-no" title="function not covered" >(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >        const id = req.params.id;</span>
+<span class="cstat-no" title="statement not covered" >        return this.data.offers.findById(id)</span>
+            .then((offer) =&gt; {
+<span class="cstat-no" title="statement not covered" >                return Promise</span>
+                    .all([
+                        this.data.users.removeOfferByOfferId(
+                            req.user.username, id
+                        ),
+                        this.data.offers.removeById(offer),
+                    ]);
+            });
+    }
+&nbsp;
+    create<span class="fstat-no" title="function not covered" >(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >        const offer = req.body;</span>
+<span class="cstat-no" title="statement not covered" >        const user = req.user;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        req.assert('title',</span>
+            'Title must be between 2 and 15 symbols.').len(2, 15);
+<span class="cstat-no" title="statement not covered" >        req.assert('image1',</span>
+            'Image link is required.').notEmpty();
+<span class="cstat-no" title="statement not covered" >        req.assert('description',</span>
+            'Description is required.').notEmpty();
+<span class="cstat-no" title="statement not covered" >        req.assert('rating',</span>
+            'Rating must be a number between 1 and 5.').notEmpty().isInt();
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return req.getValidationResult()</span>
+            .then((result) =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!result.isEmpty()) {</span>
+<span class="cstat-no" title="statement not covered" >                    return res.status(400).render('offers/form', {</span>
+                        context: offer,
+                        errors: result.array(),
+                    });
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                offer.user = {</span>
+                    id: user._id,
+                    username: user.username,
+                };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return Promise</span>
+                    .all([
+                        this.data.offers.create(offer),
+                    ])
+                    .then(([dbOffer]) =&gt; {
+<span class="cstat-no" title="statement not covered" >                        user.offers = user.offers || [];</span>
+<span class="cstat-no" title="statement not covered" >                        user.offers.push({</span>
+                            _id: dbOffer._id,
+                            title: dbOffer.title,
+                            image1: dbOffer.image1,
+                            image2: dbOffer.image2,
+                            image3: dbOffer.image3,
+                            description: dbOffer.description,
+                            rating: dbOffer.rating,
+                        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        return Promise.all([</span>
+                            this.data.offers.updateById(dbOffer),
+                            this.data.users.updateById(user),
+                        ])
+                            .then(() =&gt; {
+<span class="cstat-no" title="statement not covered" >                                return res.redirect('/offers/' + dbOffer._id);</span>
+                            });
+                    })
+&nbsp;
+                    .catch((err) =&gt; {
+<span class="cstat-no" title="statement not covered" >                        req.flash('error', err);</span>
+<span class="cstat-no" title="statement not covered" >                        return res.redirect('/offers/form');</span>
+                    });
+            });
+    }
+&nbsp;
+    searchOfferByTitle<span class="fstat-no" title="function not covered" >(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >        const title = req.body.value;</span>
+<span class="cstat-no" title="statement not covered" >        return this.data.offers.getByTitle(title)</span>
+            .then((offers) =&gt; {
+<span class="cstat-no" title="statement not covered" >                return res.render('offers/search', {</span>
+                    context: offers || [],
+                });
+            });
+    }
+&nbsp;
+    addComment(req, res) {
+        const id = req.params.id;
+        const comment = req.body.comment;
+&nbsp;
+        return this.data.offers.findById(id)
+            .then((offer) =&gt; {
+<span class="cstat-no" title="statement not covered" >                offer.comments = offer.comments || [];</span>
+<span class="cstat-no" title="statement not covered" >                offer.comments.push(comment);</span>
+<span class="cstat-no" title="statement not covered" >                return this.data.offers.updateById(offer)</span>
+                    .then(() =&gt; {
+<span class="cstat-no" title="statement not covered" >                        return res.redirect('/offers/' + id);</span>
+                    });
+            });
+    }
+}
+&nbsp;
+const init = (data) =&gt; {
+    return new OffersController(data);
+};
+&nbsp;
+module.exports = { init };
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jul 29 2017 21:17:16 GMT+0300 (Финландия - лятно часово време)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>
