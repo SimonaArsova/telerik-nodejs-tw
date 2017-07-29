@@ -36,6 +36,10 @@ const attachTo = (app, data) => {
     app.post('/search', (req, res) =>{
        return controller.searchOfferByTitle(req, res);
     });
+
+    app.get('/api/offers', (req, res) => {
+        return controller.getAll(req, res);
+    });
 };
 
 module.exports = { attachTo };
