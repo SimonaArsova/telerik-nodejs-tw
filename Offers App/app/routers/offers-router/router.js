@@ -1,6 +1,5 @@
 const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
-    const errorsController = require('../../errors-controller')();
 
     app.get('/', (req, res) =>{
         return controller.getHome(req, res);
@@ -34,11 +33,9 @@ const attachTo = (app, data) => {
         return controller.deleteOfferById(req, res);
     });
 
-    app.post('/offers/search', (req, res) =>{
+    app.post('/search', (req, res) =>{
        return controller.searchOfferByTitle(req, res);
     });
-
-    app.get('/error', errorsController.show);
 };
 
 module.exports = { attachTo };
