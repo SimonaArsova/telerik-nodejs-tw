@@ -18,20 +18,6 @@ class UsersData extends BaseData {
             .findOne({ username: username, password: password });
     }
 
-    // checkPassword(username, password) {
-    //     return this.findByUsername(username)
-    //         .then((user) => {
-    //             if (!user) {
-    //                 throw new Error('Invalid user');
-    //             }
-    //             if (user.password !== password) {
-    //                 throw new Error('Invalid password');
-    //             }
-
-    //             return true;
-    //         });
-    // }
-
    removeOfferByOfferId(username, id) {
         return this.collection.update(
             { },

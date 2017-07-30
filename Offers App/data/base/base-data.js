@@ -9,14 +9,6 @@ class BaseData {
         this.collection = this.db.collection(this.collectionName);
     }
 
-    findLastOffers() {
-        return this.collection
-            .find()
-            .sort({ $natural: -1 })
-            .limit(3)
-            .toArray();
-    }
-
     filterBy(props) {
         return this.collection.find(props)
             .toArray();

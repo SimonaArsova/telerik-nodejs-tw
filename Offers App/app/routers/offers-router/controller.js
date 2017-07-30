@@ -49,7 +49,6 @@ class OffersController {
         const id = req.params.id;
         return this.data.offers.findById(id)
             .then((offer) => {
-                console.log(offer);
                 return Promise
                     .all([
                         this.data.users.removeOfferByOfferId(

@@ -3,7 +3,7 @@ const sinon = require('sinon');
 
 const BaseData = require('../../../data/base/base-data');
 
-describe('BaseData.getAll()', () => {
+describe('BaseData', () => {
     const db = {
         collection: () => { },
     };
@@ -17,20 +17,24 @@ describe('BaseData.getAll()', () => {
         return Promise.resolve(offers);
     };
 
-    const find = () => {
-        return {
-            toArray,
-        };
-    };
+    describe('Get all when there are offers in db', () => {
+        beforeEach(() => {
+            offers =[1, 2, 3, 4];
 
-    describe('when there are offers in db', () => {
+            const find = () => {
+                return {
+                    toArray,
+                };
+            };
+
+            sinon.stub(db, 'collection')
+                .callsFake(() => {
+                    return { find };
+                });
+        });
+
         describe('with default toViewModel', () => {
             beforeEach(() => {
-                offers = [1, 2, 3, 4];
-                sinon.stub(db, 'collection')
-                    .callsFake(() => {
-                        return { find };
-                    });
                 ModelClass = class {
                 };
 
@@ -52,11 +56,6 @@ describe('BaseData.getAll()', () => {
 
         describe('with custom toViewModel', () => {
             beforeEach(() => {
-                offers = [1, 2, 3, 4];
-                sinon.stub(db, 'collection')
-                    .callsFake(() => {
-                        return { find };
-                    });
                 ModelClass.toViewModel = (model) => {
                     return model + '1';
                 };
@@ -78,6 +77,38 @@ describe('BaseData.getAll()', () => {
                         });
                     });
             });
+        });
+    });
+
+    describe('Filter by', () => {
+        beforeEach(() => {
+            offers = [1, 2, 3, 4];
+            const find = (props) => {
+                return {
+                    toArray,
+                };
+            };
+
+            sinon.stub(db, 'collection')
+                .callsFake(() => {
+                    return { find };
+                });
+            ModelClass = class {
+            };
+
+            // Arrange
+            data = new BaseData(db, ModelClass, validator);
+        });
+
+        afterEach(() => {
+            db.collection.restore();
+        });
+
+        it('expect to filter offers', () => {
+            return data.filterBy('$gt: 3')
+                .then((found) => {
+                    expect(found).to.include(4);
+                });
         });
     });
 });
