@@ -8,12 +8,12 @@ block body
                     p
                         label(for="title")
                             |Title:
-                        input(required type = "text" name = "title")
+                        input(type = "text" name = "title")
                     p
                         .img
                             label(for="Image")
                                 |Images:
-                            input(required type = "text", name = "image1")
+                            input(type = "text", name = "image1")
                         .img
                             label(for="Image")
                             input(type = "text", name = "image2")
@@ -23,7 +23,7 @@ block body
                     p
                         label(for="description")
                             |Description:
-                        textarea(required name = "description"  rows="5").description
+                        textarea(name = "description"  rows="5").description
                     p
                         label(for="rating")
                             |Rating:

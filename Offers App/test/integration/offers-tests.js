@@ -56,10 +56,10 @@ describe('/offers tests', () => {
         });
     });
 
-    describe('POST /offers/form', () => {
+    describe('POST /offers', () => {
         it('expect to redirect /offers/:id', (done) => {
             request(app)
-                .post('/offers/form')
+                .post('/offers')
                 .field('title', 'title')
                 .field('image1', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
                 .field('description', 'some description')
@@ -67,7 +67,7 @@ describe('/offers tests', () => {
                     if (err) {
                         return done(err);
                     }
-                return request(app)
+                    return request(app)
                         .get('/offers/:id')
                         .expect(200)
                         .end((er, re) => {
@@ -76,6 +76,48 @@ describe('/offers tests', () => {
                             }
                             return done();
                         });
+                });
+        });
+        it('expect to return 400 if title is incorrect', (done) => {
+            request(app)
+                .post('/offers')
+                .field('title', 't')
+                .field('image1', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
+                .field('description', 'some description')
+                .expect(400)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+        it('expect to return 400 if image is empty', (done) => {
+            request(app)
+                .post('/offers')
+                .field('title', 'title')
+                .field('image1', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
+                .field('description', '')
+                .expect(400)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+        it('expect to return 400 if description is empty', (done) => {
+            request(app)
+                .post('/offers')
+                .field('title', 'title')
+                .field('image1', '')
+                .field('description', 'some description')
+                .expect(400)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
                 });
         });
     });
@@ -89,7 +131,7 @@ describe('/offers tests', () => {
                     if (err) {
                         return done(err);
                     }
-                return request(app)
+                    return request(app)
                         .get('/offers/:id')
                         .expect(200)
                         .end((er, re) => {

@@ -72,9 +72,7 @@ describe('/users tests', () => {
                         });
                 });
         });
-    });
 
-    describe('POST /auth/sign-up', () => {
         it('expect to load /auth/sign-up if user already exists', (done) => {
             request(app)
                 .post('/auth/sign-up')
@@ -106,6 +104,66 @@ describe('/users tests', () => {
                                     return done();
                                 });
                         });
+                });
+        });
+
+        it('expect to return 400 if  username is incorrect', (done) => {
+            request(app)
+                .post('/auth/sign-up')
+                .field('username', '')
+                .field('password', 'password')
+                .field('password-confirm', 'password')
+                .field('email', 'abv@abv.bg')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+
+        it('expect to return 400 if passord is incorrect', (done) => {
+            request(app)
+                .post('/auth/sign-up')
+                .field('username', 'username')
+                .field('password', 'pas')
+                .field('password-confirm', 'pas')
+                .field('email', 'abv@abv.bg')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+
+        it('expect to return 400 if passords are different', (done) => {
+            request(app)
+                .post('/auth/sign-up')
+                .field('username', 'username')
+                .field('password', 'pasword')
+                .field('password-confirm', 'pass123')
+                .field('email', 'abv@abv.bg')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+
+        it('expect to return 400 if email is not valid', (done) => {
+            request(app)
+                .post('/auth/sign-up')
+                .field('username', 'username')
+                .field('password', 'pasword')
+                .field('password-confirm', 'password')
+                .field('email', 'abv')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
                 });
         });
     });
