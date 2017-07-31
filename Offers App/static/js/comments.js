@@ -1,3 +1,5 @@
+/* global $ */
+
 $(document).ready(() => {
     $('.comment-btn').on('click', () => {
         $('.comment').css('display', 'block');

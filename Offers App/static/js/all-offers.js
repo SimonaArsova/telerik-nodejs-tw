@@ -1,3 +1,5 @@
+/* global $ */
+
 $(document).ready(() => {
     $('.find-best').on('click', () => {
         const url = `${document.location.origin}/api/offers`;

@@ -1,3 +1,5 @@
+/* global $ */
+
 $(document).ready(() => {
     $('.remove-offer-btn').on('click', () => {
         const url = $(event.target).prev('.a').attr('href');
