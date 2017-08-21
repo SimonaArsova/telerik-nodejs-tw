@@ -42,9 +42,9 @@ block body
             each comment in context.comments
                 div
                     div.user
-                        =context.user.username + ":"
+                        =comment.user + ":"
                     div.user-comment
-                        =comment
+                        =comment.comment
         div
             button.btn.btn-info.comment-btn
                 |Add comment

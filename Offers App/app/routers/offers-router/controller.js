@@ -130,7 +130,10 @@ class OffersController {
 
     addComment(req, res) {
         const id = req.params.id;
-        const comment = req.body.comment;
+        const comment = {
+            comment: req.body.comment,
+            user: req.user.username,
+        };
 
         return this.data.offers.findById(id)
             .then((offer) => {

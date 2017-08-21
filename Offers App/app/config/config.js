@@ -6,6 +6,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+// const session = require('express-session');
+const expressValidator = require('express-validator');
+
 const applyTo = (app) => {
     app.set('view engine', 'pug');
     app.use(bodyParser.json());
@@ -18,6 +21,16 @@ const applyTo = (app) => {
     app.use('/static', express.static(staticsPath));
 
     app.use(cookieParser('keyboard cat'));
+
+    // app.use(session({ cookie: { maxAge: 6000 } }));
+
+    app.use(require('connect-flash')());
+    app.use((req, res, next) => {
+        res.locals.messages = require('express-messages')(req, res);
+        next();
+    });
+
+    app.use(expressValidator());
 };
 
 module.exports = { applyTo };
