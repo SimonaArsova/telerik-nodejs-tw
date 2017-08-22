@@ -1,0 +1,19 @@
+extends ../_shared/_master
+block body
+    div.profile-container.panel.panel-default
+        div.inner-container
+            if context.picture
+                img.img-circle.picture(src=context.picture, alt="")
+            else
+                img.img-circle.picture(src = 'https://cdn2.iconfinder.com/data/icons/finances/512/client-512.png')
+            a.btn.btn-info(href="/my-profile/edit")
+                |Edit profile picture
+        
+            h2
+                |Username: 
+            h4
+                =context.username
+            h2
+                |E-mail: 
+            h4
+                =context.email

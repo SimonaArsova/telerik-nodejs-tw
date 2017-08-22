@@ -1,0 +1,16 @@
+.picture{
+    width:200px;
+    border: 1px solid #aaa;
+}
+
+.profile-container{
+    margin:0px auto;
+    width:350px;
+}
+
+.inner-container{
+    margin:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

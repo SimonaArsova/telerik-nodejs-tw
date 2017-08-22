@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 
 const attachTo = (app, data) => {
-
     fs.readdirSync(__dirname)
         .filter((file) => file.includes('-router'))
         .forEach((file) => {

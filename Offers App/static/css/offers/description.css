@@ -23,7 +23,7 @@ img{
     width: 100%;
 }
 
-.descr, .rating, .comments{
+.descr, .rating, .comments, .author{
     padding:10px;
 }
 

@@ -13,6 +13,12 @@ class UsersData extends BaseData {
             .then(([user]) => user);
     }
 
+    updateUserByUsername(model) {
+        return this.collection.updateOne({
+            username: model.username,
+        }, model);
+    }
+
     login(username, password) {
         return this.collection
             .findOne({ username: username, password: password });

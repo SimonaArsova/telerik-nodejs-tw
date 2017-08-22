@@ -27,6 +27,32 @@ class OffersController {
         });
     }
 
+    getUserProfile(req, res) {
+        return res.render('user/profile', {
+            context: req.user || [],
+        });
+    }
+
+    getEditUserProfile(req, res) {
+        return res.render('user/edit', {
+            context: req.user || [],
+        });
+    }
+
+    editUserProfile(req, res) {
+        const username = req.params.username;
+        const user = req.body;
+
+        return this.data.users.findByUsername(username)
+            .then((u)=>{
+                u.picture = user.picture;
+                return this.data.users.updateUserByUsername(u);
+            })
+            .then(()=>{
+                return res.redirect('/my-profile');
+            });
+    }
+
     getForm(req, res) {
         return Promise.resolve()
             .then(() => {
