@@ -16,9 +16,12 @@ block body
                 .info-user
                     .title-user
                         =context.username
-                    .desc Passionate designer
-                    .desc Curious developer
-                    .desc Tech geek
+                    .desc 
+                        =context.email
+                .message
+                    button.btn.btn-info
+                        |Send message
+                    
                 .bottom
                     a.card-btn.btn.btn-primary.btn-twitter.btn-sm(href='https://twitter.com/webmaniac')
                         i.fa.fa-twitter
@@ -26,5 +29,26 @@ block body
                         i.fa.fa-google-plus
                     a.card-btn.btn.btn-primary.btn-sm(rel='publisher', href='https://plus.google.com/shahnuralam')
                         i.fa.fa-facebook
-                    a.card-btn.btn.btn-warning.btn-sm(rel='publisher', href='https://plus.google.com/shahnuralam')
-                        i.fa.fa-behance
+        .col-lg-9
+            .offers.panel.panel-default
+                .panel-heading
+                    |All offers of 
+                    =context.username
+                .panel-body
+                    ul
+                        if context.offers.length > 0
+                            each offer in context.offers
+                                li.li-offer
+                                    .col-md-2.offer-user
+                                        a(href="/offers/" + offer._id)
+                                            img.offer-img.img-thumbnail(src = offer.image1)
+                                    .col-md-8.offer-info
+                                        h2
+                                            =offer.title
+                                        h4.overflow-des
+                                            =offer.description
+                                    a.btn.btn-info.user-offers-btn(href="/offers/" + offer._id)
+                                       |Show more information
+                        else
+                            h2.no-offers
+                                |This user has no offers yet   

@@ -16,10 +16,10 @@
     border:1px solid #aaa
 }
 
-.row{
+/* .row{
     display: flex;
     justify-content: center;
-}
+} */
 
 .card .card-heading {
     padding: 0 20px;
@@ -246,3 +246,37 @@
 }
 
 .card-btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
+
+.panel-heading{
+    font-size: 18px;
+    text-align: center;
+}
+
+.no-offers{
+    text-align: center;
+}
+
+.offer-user{
+    margin: 10px;
+    background-size: auto;
+}
+
+.offer-img{
+    height: 100px;
+}
+
+.user-offers-btn{
+    height: 40px;
+    vertical-align: center;
+    margin-top:40px;
+    margin-right:10px; 
+}
+
+.overflow-des{
+    overflow: auto;
+}
+
+.li-offer{
+    display: flex;
+    flex-direction: row;
+}

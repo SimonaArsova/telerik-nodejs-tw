@@ -5,10 +5,12 @@ block body
     .login-container
         form(action='/auth/sign-up', method="POST")
             <h2 class="form-sign-up" id="sign-up-form-header">Sign up</h2>
-            input.form-control.auth-info(type="text" name="username" placeholder="Enter username")
-            input.form-control.auth-info(type="password" name="password" placeholder="Enter password")
-            input.form-control.auth-info(type="password" name="password-confirm" placeholder="Repeat password")
-            input.form-control.auth-info(type="email" name="email" placeholder="Email")
+            input.form-control.auth-info(type="text" name="username" placeholder="Enter username*")
+            input.form-control.auth-info(type="password" name="password" placeholder="Enter password*")
+            input.form-control.auth-info(type="password" name="password-confirm" placeholder="Repeat password*")
+            input.form-control.auth-info(type="email" name="email" placeholder="Email*")
             input.form-control.auth-info(type="text" name="picture" placeholder="Enter profile picture URL")
+            span.help-block
+                |* Required fields
             button.btn.btn-info
                 | Sign Up
