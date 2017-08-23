@@ -31,19 +31,20 @@ img{
     display: none;
 }
 
-.user, .user-comment {
-    padding:10px;
+.user-data .user-comment{
     display: inline-block;
-    margin: 5px;
 }
 
 .user {
     color: #76bde9;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
+    margin-left: 10px;
 }
 
 .user-comment {
+    margin-left: 10px;
+    padding: 10px;
     background-color: aliceblue;
     border: 1px solid lightskyblue;
     border-radius: 8px;
@@ -53,3 +54,16 @@ img{
 .comment-btn {
     margin: 10px;
 }
+
+#comment-image{
+    width: 50px;
+    height: 50px;
+    margin-left:10px;
+    border: 0.5px solid #76bde9;
+}
+
+.user-data{
+    display: flex;
+    flex-direction: row;
+}
+

@@ -27,7 +27,7 @@ block body
         div.author
             h2
                 |Author: 
-            h4
+            a(href="/user/"+ context.user.username)
                 =context.user.username
         div.descr
             h2
@@ -46,10 +46,12 @@ block body
         if context.comments
             each comment in context.comments
                 div
-                    div.user
+                    div.user-data
+                        img.img-rounded#comment-image(src=comment.picture)
+                        div.user-comment
+                            =comment.comment
+                    a.user(href="/user/"+ comment.user)
                         =comment.user + ":"
-                    div.user-comment
-                        =comment.comment
         div
             button.btn.btn-info.comment-btn
                 |Add comment

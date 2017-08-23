@@ -18,16 +18,20 @@ const attachTo = (app, data) => {
     });
 
     app.get('/my-profile', (req, res) => {
-        return controller.getUserProfile(req, res);
+        return controller.getMyUserProfile(req, res);
     });
 
-    app.get('/my-profile/edit', (req, res) => {
-        return controller.getEditUserProfile(req, res);
+    app.get('/user/:username', (req, res) => {
+        return controller.getOtherUserProfile(req, res);
     });
 
-    app.post('/my-profile/edit/:username', (req, res) => {
-        return controller.editUserProfile(req, res);
-    });
+    // app.get('/my-profile/edit', (req, res) => {
+    //     return controller.getEditUserProfile(req, res);
+    // });
+
+    // app.post('/my-profile/edit/:username', (req, res) => {
+    //     return controller.editUserProfile(req, res);
+    // });
 
     app.post('/offers', (req, res) => {
         return controller.create(req, res);

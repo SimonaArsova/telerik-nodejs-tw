@@ -1,0 +1,30 @@
+extends ../_shared/_master
+block body
+    .row
+        .col-lg-3.col-sm-6
+            .card.hovercard
+                .cardheader
+                    if context.offers.length > 0
+                        img(src=context.offers[0].image1, alt="")
+                    else 
+                        img(src="http://thewallpaper.co/wp-content/uploads/2016/10/Summer-Sea-Star-Fish-Wallpapers.jpg", alt="")
+                .avatar
+                    if context.picture
+                        img(alt='', src=context.picture)
+                    else
+                        img(src='https://cdn2.iconfinder.com/data/icons/finances/512/client-512.png', alt="")
+                .info-user
+                    .title-user
+                        =context.username
+                    .desc Passionate designer
+                    .desc Curious developer
+                    .desc Tech geek
+                .bottom
+                    a.card-btn.btn.btn-primary.btn-twitter.btn-sm(href='https://twitter.com/webmaniac')
+                        i.fa.fa-twitter
+                    a.card-btn.btn.btn-danger.btn-sm(rel='publisher', href='https://plus.google.com/+ahmshahnuralam')
+                        i.fa.fa-google-plus
+                    a.card-btn.btn.btn-primary.btn-sm(rel='publisher', href='https://plus.google.com/shahnuralam')
+                        i.fa.fa-facebook
+                    a.card-btn.btn.btn-warning.btn-sm(rel='publisher', href='https://plus.google.com/shahnuralam')
+                        i.fa.fa-behance
