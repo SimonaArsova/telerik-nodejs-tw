@@ -31,6 +31,13 @@ class UsersData extends BaseData {
             { multi: true }
         );
     }
+
+    updateAvatar(username, avatar) {
+        this.collection.update(
+            { username: username },
+            { $set: { picture: avatar } }
+        );
+    }
 }
 
 module.exports = UsersData;

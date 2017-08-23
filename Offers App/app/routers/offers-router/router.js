@@ -52,6 +52,14 @@ const attachTo = (app, data) => {
     app.get('/api/offers', (req, res) => {
         return controller.getAll(req, res);
     });
+
+    app.get('/api/upload', (req, res) =>{
+       return controller.getUpload(req, res);
+    });
+
+    app.post('/api/my-profile/edit/:username/avatar', (req, res) =>{
+       return controller.updateAvatar(req, res);
+    });
 };
 
 module.exports = { attachTo };

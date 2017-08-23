@@ -2,7 +2,13 @@ extends ../_shared/_master
 block body
     div.profile-container.panel.panel-default
         div.inner-container
-            form(action="/my-profile/edit/"+ context.username method="POST")
-                input(type="text", name="picture", placeholder = "New profile picture URL")
-                button.btn.btn-info
-                    |Save
+            h3.panel-title#curent-user
+                | #{context.username}
+            dl
+                dt
+                    button(id='change-avatar-btn', type='button', class='btn btn-info', data-toggle="modal" data-target="#myModal")
+                        span.glyphicon.glyphicon-picture
+                        |  Change avatar
+                dt
+                    div.col-md-6
+                        .upload-avatar
