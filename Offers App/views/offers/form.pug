@@ -4,22 +4,16 @@ block body
     .offers-body.form
         .panel.panel-default.col-md-6
             .panel-body.form
-                form(action="/offers" method = "POST")
+                form(action="/offers" method = "POST" enctype="multipart/form-data")
                     p
                         label(for="title")
                             |Title:
                         input(type = "text" name = "title")
                     p
-                        .img
-                            label(for="Image")
-                                |Images:
-                            input(type = "text", name = "image1")
-                        .img
-                            label(for="Image")
-                            input(type = "text", name = "image2")
-                        .img
-                            label(for="Image")
-                            input(type = "text", name = "image3")
+                        label(for="Image")
+                            |Images:
+                        input.input-image(type="file" name="image" id="file" class="form-control" multiple="multiple")
+                        div(id="imgContainer" class="col-sm-12")
                     p
                         label(for="description")
                             |Description:
@@ -36,3 +30,4 @@ block body
                     p
                         button.btn.btn-info
                             |Save       
+    script(src='/static/js/show-image.js')

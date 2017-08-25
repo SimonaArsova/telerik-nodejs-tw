@@ -99,63 +99,65 @@ class OffersController {
             });
     }
 
-    create(req, res) {
-        const offer = req.body;
-        const user = req.user;
+    create(req, res, upload) {
+        upload(req, res, (err) => {
+            const offer = req.body;
+            const user = req.user;
 
-        req.assert('title',
-            'Title must be between 2 and 15 symbols.').len(2, 15);
-        req.assert('image1',
-            'Image link is required.').notEmpty();
-        req.assert('description',
-            'Description is required.').notEmpty();
-        req.assert('rating',
-            'Rating must be a number between 1 and 5.').notEmpty().isInt();
+            req.assert('title',
+                'Title must be between 2 and 15 symbols.').len(2, 15);
+            // req.assert('image1',
+            //     'Image link is required.').notEmpty();
+            req.assert('description',
+                'Description is required.').notEmpty();
+            req.assert('rating',
+                'Rating must be a number between 1 and 5.').notEmpty().isInt();
 
-        return req.getValidationResult()
-            .then((result) => {
-                if (!result.isEmpty()) {
-                    return res.status(400).render('offers/form', {
-                        context: offer,
-                        errors: result.array(),
-                    });
-                }
-
-                offer.user = {
-                    id: user._id,
-                    username: user.username,
-                };
-
-                return Promise
-                    .all([
-                        this.data.offers.create(offer),
-                    ])
-                    .then(([dbOffer]) => {
-                        user.offers = user.offers || [];
-                        user.offers.push({
-                            _id: dbOffer._id,
-                            title: dbOffer.title,
-                            image1: dbOffer.image1,
-                            image2: dbOffer.image2,
-                            image3: dbOffer.image3,
-                            description: dbOffer.description,
-                            rating: dbOffer.rating,
+            return req.getValidationResult()
+                .then((result) => {
+                    if (!result.isEmpty()) {
+                        return res.status(400).render('offers/form', {
+                            context: offer,
+                            errors: result.array(),
                         });
+                    }
 
-                        return Promise.all([
-                            this.data.offers.updateById(dbOffer),
-                            this.data.users.updateById(user),
+                    offer.images = req.files;
+
+                    offer.user = {
+                        id: user._id,
+                        username: user.username,
+                    };
+
+                    return Promise
+                        .all([
+                            this.data.offers.create(offer),
                         ])
-                            .then(() => {
-                                return res.redirect('/offers/' + dbOffer._id);
+                        .then(([dbOffer]) => {
+                            user.offers = user.offers || [];
+                            user.offers.push({
+                                _id: dbOffer._id,
+                                title: dbOffer.title,
+                                images: dbOffer.images,
+                                description: dbOffer.description,
+                                rating: dbOffer.rating,
                             });
-                    })
 
-                    .catch((err) => {
-                        req.flash('error', err);
-                        return res.redirect('/offers/form');
-                    });
-            });
+                            return Promise.all([
+                                this.data.offers.updateById(dbOffer),
+                                this.data.users.updateById(user),
+                            ])
+                                .then(() => {
+                                    return res.redirect('/offers/' + dbOffer._id);
+                                });
+                        })
+
+                        .catch((er) => {
+                            req.flash('error', er);
+                            return res.redirect('/offers/form');
+                        });
+                });
+        });
     }
 
     searchOfferByTitle(req, res) {

@@ -1,3 +1,6 @@
+const multer = require('multer');
+const upload = multer({ dest: 'static/images/uploads' }).array('image', 3);
+
 const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
 
@@ -34,7 +37,7 @@ const attachTo = (app, data) => {
     // });
 
     app.post('/offers', (req, res) => {
-        return controller.create(req, res);
+        return controller.create(req, res, upload);
     });
 
     app.get('/offers/:id', (req, res) => {

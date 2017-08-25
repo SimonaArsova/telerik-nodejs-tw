@@ -11,13 +11,13 @@ block body
 
             .carousel-inner
                     .item.active
-                        img(src = context.image1, alt='img1')
-                    if context.image2
+                        img(src = '/' + context.images[0].path, alt='img1')
+                    if context.images[1]
                         .item
-                            img(src = context.image2, alt='img2')
-                    if context.image3
+                            img(src = '/' + context.images[1].path, alt='img2')
+                    if context.images[2]
                         .item
-                            img(src = context.image3, alt='img3')        
+                            img(src = '/' + context.images[3].path, alt='img3')        
                     a.left.carousel-control(href='#myCarousel', data-slide='prev')
                         span.glyphicon.glyphicon-chevron-left
                         span.sr-only Previous

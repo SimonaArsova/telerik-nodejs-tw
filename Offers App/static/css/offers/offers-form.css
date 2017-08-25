@@ -25,6 +25,10 @@ input {
     width:70%;
 }
 
+.input-image{
+    width: 70%;
+}
+
 .description {
     overflow: auto;
     width: 70%;

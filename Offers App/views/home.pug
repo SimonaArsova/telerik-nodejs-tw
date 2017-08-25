@@ -17,14 +17,14 @@ block body
                                 .carousel-title 
                                     = offer.title
                                 a(href="/offers/" + offer._id)
-                                    img.carousel-image(src = offer.image1, alt='img1')
+                                    img.carousel-image(src = '/' + offer.images[0].path, alt='img1')
                                     
                         else
                             .item
                                 .carousel-title 
                                     = offer.title
                                 a(href="/offers/" + offer._id)
-                                    img.carousel-image(src = offer.image1, alt='img1')
+                                    img.carousel-image(src = '/' + offer.images[0].path, alt='img1')
                         a.left.carousel-control(href='#myCarousel', data-slide='prev')
                             span.glyphicon.glyphicon-chevron-left
                             span.sr-only Previous

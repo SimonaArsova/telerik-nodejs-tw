@@ -61,7 +61,7 @@ describe('/offers tests', () => {
             request(app)
                 .post('/offers')
                 .field('title', 'title')
-                .field('image1', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
+                .field('images[0]', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
                 .field('description', 'some description')
                 .end((err, res) => {
                     if (err) {
@@ -82,7 +82,7 @@ describe('/offers tests', () => {
             request(app)
                 .post('/offers')
                 .field('title', 't')
-                .field('image1', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
+                .field('images[0]', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
                 .field('description', 'some description')
                 .expect(400)
                 .end((err, res) => {
@@ -96,7 +96,7 @@ describe('/offers tests', () => {
             request(app)
                 .post('/offers')
                 .field('title', 'title')
-                .field('image1', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
+                .field('images[0]', 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg')
                 .field('description', '')
                 .expect(400)
                 .end((err, res) => {
@@ -110,7 +110,7 @@ describe('/offers tests', () => {
             request(app)
                 .post('/offers')
                 .field('title', 'title')
-                .field('image1', '')
+                .field('images[0]', '')
                 .field('description', 'some description')
                 .expect(400)
                 .end((err, res) => {
