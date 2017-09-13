@@ -27,8 +27,12 @@ block body
         div.author
             h2
                 |Author: 
-            a(href="/user/"+ context.user.username)
-                =context.user.username
+            if user.username != context.user.username
+                a(href="/user/"+ context.user.username)
+                    =context.user.username
+            else
+                div
+                    =context.user.username
         div.descr
             h2
                 |Description: 

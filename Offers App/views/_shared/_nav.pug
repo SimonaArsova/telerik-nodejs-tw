@@ -13,15 +13,22 @@ mixin nav()
 
             ul.nav.navbar-nav.navbar-right
                 if user
+                    li
+                        a(href='/user/messages')
+                            if user.hasUnreadMessages == true
+                                i(class="fa fa-comment fa-lg" aria-hidden="true" style = "color: #33d3f7")
+                                span(class="badge badge-notify") !
+                            else
+                                i(class="fa fa-comment fa-lg" aria-hidden="true")
                     li.dropdown.right
                         a.dropdown-toggle(data-toggle='dropdown', href='#')
                             =user.username
                             span.caret
                         ul.dropdown-menu
                             li
-                                a(href='/my-profile') My profile
+                                a(href='/user/my-profile') My profile
                             li
-                                a(href='/offers/my-offers') My places
+                                a(href='/user/my-offers') My places
                             li
                                 a(href='/offers/form') Add place
                             li

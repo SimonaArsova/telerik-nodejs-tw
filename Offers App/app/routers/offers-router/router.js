@@ -16,18 +16,6 @@ const attachTo = (app, data) => {
         return controller.getForm(req, res);
     });
 
-    app.get('/offers/my-offers', (req, res) => {
-        return controller.getUsersOffers(req, res);
-    });
-
-    app.get('/my-profile', (req, res) => {
-        return controller.getMyUserProfile(req, res);
-    });
-
-    app.get('/user/:username', (req, res) => {
-        return controller.getOtherUserProfile(req, res);
-    });
-
     // app.get('/my-profile/edit', (req, res) => {
     //     return controller.getEditUserProfile(req, res);
     // });

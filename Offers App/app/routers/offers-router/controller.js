@@ -24,29 +24,6 @@ class OffersController {
             });
     }
 
-    getUsersOffers(req, res) {
-        return res.render('offers/users-offers', {
-            context: req.user.offers || [],
-        });
-    }
-
-    getMyUserProfile(req, res) {
-        return res.render('user/my-profile', {
-            context: req.user || [],
-        });
-    }
-
-    getOtherUserProfile(req, res) {
-        const username = req.params.username;
-
-        return this.data.users.findByUsername(username)
-            .then((user) => {
-                return res.render('user/profile-other', {
-                    context: user || [],
-                });
-            });
-    }
-
     // getEditUserProfile(req, res) {
     //     return res.render('user/edit', {
     //         context: req.user || [],
@@ -81,6 +58,7 @@ class OffersController {
                 return res.render('offers/description',
                     {
                         context: offer || [],
+                        user: req.user,
                     });
             });
     }

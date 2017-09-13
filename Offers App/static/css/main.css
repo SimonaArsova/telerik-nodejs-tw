@@ -53,6 +53,16 @@ a {
     text-align: center;
 }
 
+ .badge-notify{
+     background:red;
+     position:relative;
+     -moz-transform: translate(-50%, -50%); /* For Firefox */
+     -ms-transform: translate(-50%, -50%); /* for IE */
+     -webkit-transform: translate(-50%, -50%); /* For Safari, Chrome, iOS */
+     -o-transform: translate(-50%, -50%); /* For Opera */
+
+ }
+
 /*
 .nav-btn:focus{
     background-color: rgba(255, 255, 255, .7);
