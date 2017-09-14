@@ -1,5 +1,7 @@
 const multer = require('multer');
 const upload = multer({ dest: 'static/images/uploads' }).array('image', 3);
+const uploadPicture = multer({ dest: 'static/images/uploads' })
+        .single('picture');
 
 const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
@@ -15,14 +17,6 @@ const attachTo = (app, data) => {
     app.get('/offers/form', (req, res) => {
         return controller.getForm(req, res);
     });
-
-    // app.get('/my-profile/edit', (req, res) => {
-    //     return controller.getEditUserProfile(req, res);
-    // });
-
-    // app.post('/my-profile/edit/:username', (req, res) => {
-    //     return controller.editUserProfile(req, res);
-    // });
 
     app.post('/offers', (req, res) => {
         return controller.create(req, res, upload);
@@ -53,7 +47,7 @@ const attachTo = (app, data) => {
     });
 
     app.post('/api/my-profile/edit/:username/avatar', (req, res) =>{
-       return controller.updateAvatar(req, res);
+       return controller.updateAvatar(req, res, uploadPicture);
     });
 };
 

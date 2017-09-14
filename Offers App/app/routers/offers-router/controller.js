@@ -23,27 +23,6 @@ class OffersController {
                 });
             });
     }
-
-    // getEditUserProfile(req, res) {
-    //     return res.render('user/edit', {
-    //         context: req.user || [],
-    //     });
-    // }
-
-    // editUserProfile(req, res) {
-    //     const username = req.params.username;
-    //     const user = req.body;
-
-    //     return this.data.users.findByUsername(username)
-    //         .then((u) => {
-    //             u.picture = user.picture;
-    //             return this.data.users.updateUserByUsername(u);
-    //         })
-    //         .then(() => {
-    //             return res.redirect('/my-profile');
-    //         });
-    // }
-
     getForm(req, res) {
         return Promise.resolve()
             .then(() => {
@@ -171,47 +150,25 @@ class OffersController {
         return res.render('user/picture');
     }
 
-    updateAvatar(req, res) {
-        const username = req.params.username;
+    updateAvatar(req, res, uploadPicture) {
+        uploadPicture(req, res, (err) => {
+            const username = req.params.username;
 
-        // if (!req.user || req.user.username !== username) {
-        //     return res.redirect('/error');
-        // }
+            // if (!req.user || req.user.username !== username) {
+            //     return res.redirect('/error');
+            // }
 
-        return this.data.users.findByUsername(username)
-            .then((user) => {
-                const storage = multer.diskStorage({
-                    destination: 'static/images/uploads/',
-                    filename: (request, file, callback) => {
-                        callback(null, file.fieldname + '-' + Date.now()
-                            + path.extname(file.originalname));
-                    },
-                });
+            const picture = req.file;
 
-                const upload = multer({
-                    storage: storage,
-                    fileFilter: (request, file, callback) => {
-                        const ext = path.extname(file.originalname);
-                        // if (ext !== '.png' && ext !== '.jpg'
-                        //         && ext !== '.jpeg') {
-                        //     return res.redirect('/error');
-                        // }
-
-                        return callback(null, true);
-                    },
-                }).single('picture');
-
-                upload(req, res, (err) => {
-                    const filePath = '../' + req.file.destination
-                        + req.file.filename;
-
+            return this.data.users.findByUsername(username)
+                .then((user) => {
                     this.data.users.updateAvatar(
-                        req.user.username, filePath
+                        req.user.username, picture
                     );
 
                     return res.redirect('/user/my-profile');
                 });
-            });
+        });
     }
 }
 

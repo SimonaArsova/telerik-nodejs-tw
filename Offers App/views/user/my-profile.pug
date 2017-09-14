@@ -8,7 +8,7 @@ block body
       .col-md-4.col-sm-6.col-xs-12
         .text-center
           
-          img.avatar.img-circle.img-thumbnail(src=context.picture, alt='avatar')
+          img.avatar.img-circle.img-thumbnail(src= '/' + context.picture.path, alt='avatar')
           h6 Upload a different photo...
           button(id='change-avatar-btn', type='button', class='btn btn-info', data-toggle="modal" data-target="#myModal")
             span.glyphicon.glyphicon-picture
@@ -20,17 +20,19 @@ block body
           i.fa.fa-coffee
           |  Here you can edit you profile information.
         h3 Personal info
-        h3#profile-username 
-            =context.username
         div.groups-profile
+          .form-group
+            label.col-lg-3.control-label Username
+            .col-lg-8#profile-username 
+              =context.username
           .form-group
             label.col-lg-3.control-label First name
             .col-lg-8
-              input.form-control(required='', value='{{this.user.firstName}}', type='text')
+              input.form-control(required='', value=context.firstname, type='text')
           .form-group
             label.col-lg-3.control-label Last name:
             .col-lg-8
-              input.form-control(required='', value='{{this.user.lastName}}', type='text')
+              input.form-control(required='', value=context.lastname, type='text')
           .form-group
             label.col-lg-3.control-label Email:
             .col-lg-8

@@ -14,7 +14,8 @@ class AuthController {
         return res.redirect('/');
     }
 
-    signUp(req, res) {
+    signUp(req, res, upload) {
+        upload(req, res, (err) => {
         const bodyUser = req.body;
 
         req.assert('username',
@@ -47,12 +48,14 @@ class AuthController {
                             });
                         }
 
+                        bodyUser.picture = req.file;
                         return this.data.users.create(bodyUser);
                     })
                     .then((dbUser) => {
                         return res.redirect('/auth/sign-in');
                     });
             });
+        });
     }
 }
 

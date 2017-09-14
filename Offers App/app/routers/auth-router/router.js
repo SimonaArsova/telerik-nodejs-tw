@@ -1,6 +1,9 @@
 const { Router } = require('express');
 const passport = require('passport');
 
+const multer = require('multer');
+const upload = multer({ dest: 'static/images/uploads' }).single('picture');
+
 const attachTo = (app, data) => {
     const router = new Router();
     const controller = require('./controller').init(data);
@@ -16,7 +19,7 @@ const attachTo = (app, data) => {
             return controller.signOut(req, res);
         })
         .post('/sign-up', (req, res) => {
-            return controller.signUp(req, res);
+            return controller.signUp(req, res, upload);
         })
         .post('/sign-in', passport.authenticate('local', {
             successRedirect: '/',

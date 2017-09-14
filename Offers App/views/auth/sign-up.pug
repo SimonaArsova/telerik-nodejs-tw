@@ -3,13 +3,16 @@ block body
     include ../errors/all
 
     .login-container
-        form(action='/auth/sign-up', method="POST")
+        form(action='/auth/sign-up' method="POST"  enctype="multipart/form-data")
             <h2 class="form-sign-up" id="sign-up-form-header">Sign up</h2>
             input.form-control.auth-info(type="text" name="username" placeholder="Enter username*")
+            input.form-control.auth-info(type="text" name="firstname" placeholder="Enter first name*")
+            input.form-control.auth-info(type="text" name="lastname" placeholder="Enter last name*")
             input.form-control.auth-info(type="password" name="password" placeholder="Enter password*")
             input.form-control.auth-info(type="password" name="password-confirm" placeholder="Repeat password*")
             input.form-control.auth-info(type="email" name="email" placeholder="Email*")
-            input.form-control.auth-info(type="text" name="picture" placeholder="Enter profile picture URL")
+            input.form-control.auth-info.input-image(type="file" name="picture" id="file" class="form-control")
+            div(id="imgContainer" class="col-sm-12")
             span.help-block
                 |* Required fields
             button.btn.btn-info
