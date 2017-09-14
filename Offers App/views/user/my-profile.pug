@@ -1,26 +1,74 @@
 extends ../_shared/_master
 block body
-    div.profile-container.panel.panel-default
-        div.inner-container
-            if context.picture
-                img.img-circle.picture(src=context.picture, alt="")
-            else
-                img.img-circle.picture(src = 'https://cdn2.iconfinder.com/data/icons/finances/512/client-512.png')
-            dl
-                dt
-                    button(id='change-avatar-btn', type='button', class='btn btn-info', data-toggle="modal" data-target="#myModal")
-                        span.glyphicon.glyphicon-picture
-                        |  Change avatar
-                dt
-                    div.col-md-6
-                        .upload-avatar
-        
-            h2
-                |Username: 
-            h4#curent-user
-                =context.username
-            h2
-                |E-mail: 
-            h4
-                =context.email
+  main
+  .container
+    h1.page-header Edit Profile
+    form.row(method='post' action='/user/my-profile')
+      // left column
+      .col-md-4.col-sm-6.col-xs-12
+        .text-center
+          
+          img.avatar.img-circle.img-thumbnail(src=context.picture, alt='avatar')
+          h6 Upload a different photo...
+          button(id='change-avatar-btn', type='button', class='btn btn-info', data-toggle="modal" data-target="#myModal")
+            span.glyphicon.glyphicon-picture
+            |  Change avatar
+      // edit form column
+      .col-md-8.col-sm-6.col-xs-12.personal-info
+        .alert.alert-info.alert-dismissable
+          a.panel-close.close(data-dismiss='alert') ×
+          i.fa.fa-coffee
+          |  Here you can edit you profile information.
+        h3 Personal info
+        h3#profile-username 
+            =context.username
+        div.groups-profile
+          .form-group
+            label.col-lg-3.control-label First name
+            .col-lg-8
+              input.form-control(required='', value='{{this.user.firstName}}', type='text')
+          .form-group
+            label.col-lg-3.control-label Last name:
+            .col-lg-8
+              input.form-control(required='', value='{{this.user.lastName}}', type='text')
+          .form-group
+            label.col-lg-3.control-label Email:
+            .col-lg-8
+              input.form-control(required='', value=context.email, type='text')
+          .form-group
+            label.col-md-3.control-label
+            .col-md-8
+              button.btn.btn-info(type='submit') Save Changes 
+              span
+              input.btn.btn-default(value='Cancel', type='reset')
+
     include ./picture.pug
+
+
+
+
+
+    //- div.profile-container.panel.panel-default
+    //-     div.inner-container
+    //-         if context.picture
+    //-             img.img-circle.picture(src=context.picture, alt="")
+    //-         else
+    //-             img.img-circle.picture(src = 'https://cdn2.iconfinder.com/data/icons/finances/512/client-512.png')
+    //-         dl
+    //-             dt
+    //-                 button(id='change-avatar-btn', type='button', class='btn btn-info', data-toggle="modal" data-target="#myModal")
+    //-                     span.glyphicon.glyphicon-picture
+    //-                     |  Change avatar
+    //-             dt
+    //-                 div.col-md-6
+    //-                     .upload-avatar
+        
+    //-         h2
+    //-             |Username: 
+    //-         h4#curent-user
+    //-             =context.username
+    //-         h2
+    //-             |E-mail: 
+    //-         h4
+    //-             =context.email
+    //- include ./picture.pug

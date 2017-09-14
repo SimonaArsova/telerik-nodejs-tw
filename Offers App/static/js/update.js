@@ -1,8 +1,9 @@
 /* global $ */
 $(document).ready(() => {
     $('#change-avatar-btn').click((event) => {
+        console.log('here');
         const $target = event.target;
-        const username = $('#curent-user').text();
+        const username = $('#profile-username').text();
         const url = `/api/upload`;
         const postUrl = `/api/my-profile/edit/${username}/avatar`;
 

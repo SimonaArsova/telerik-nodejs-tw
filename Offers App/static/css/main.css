@@ -82,3 +82,9 @@ a:link {
 }
 
 */
+
+
+body {
+    background-image: url('../../static/media/background.png');
+    overflow-x: hidden;
+}
