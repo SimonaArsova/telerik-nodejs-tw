@@ -40,10 +40,12 @@ class UserController {
             .then((user) => {
                 user.messages = user.messages || [];
                 user.messages.push(message);
+                user.hasUnreadMessages = true;
 
                 return this.data.users.updateUserByUsername(user)
                     .then(() => {
-                        author.hasUnreadMessages = true;
+                        author.messages = author.messages || [];
+                        author.messages.push(message);
                         return this.data.users.updateUserByUsername(author);
                     });
             });
@@ -52,7 +54,6 @@ class UserController {
     getUserMessages(req, res) {
         const user = req.user;
         user.hasUnreadMessages = false;
-        console.log("controller");
 
         return this.data.users.updateUserByUsername(user)
             .then(() => {
