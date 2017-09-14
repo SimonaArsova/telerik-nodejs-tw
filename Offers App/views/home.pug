@@ -1,36 +1,53 @@
 extends _shared/_master
 block body
-    h1.page-title
-        |Recently visited
-    .home-body    
-        div.container.carousel-container
-            #myCarousel.carousel.slide(data-ride='carousel')
-                ol.carousel-indicators
-                    li.active(data-target='#myCarousel', data-slide-to='0')
-                    li(data-target='#myCarousel', data-slide-to='1')
-                    li(data-target='#myCarousel', data-slide-to='2')
-    
-                .carousel-inner
-                    each offer, index in context
-                        if index == 0
-                            .item.active
-                                .carousel-title 
-                                    = offer.title
-                                a(href="/offers/" + offer._id)
-                                    img.carousel-image(src = '/' + offer.images[0].path, alt='img1')
-                                    
-                        else
-                            .item
-                                .carousel-title 
-                                    = offer.title
-                                a(href="/offers/" + offer._id)
-                                    img.carousel-image(src = '/' + offer.images[0].path, alt='img1')
-                        a.left.carousel-control(href='#myCarousel', data-slide='prev')
-                            span.glyphicon.glyphicon-chevron-left
-                            span.sr-only Previous
-                        a.right.carousel-control(href='#myCarousel', data-slide='next')
-                            span.glyphicon.glyphicon-chevron-right
-                            span.sr-only Next
-    
-        button.find-best.btn.btn-info
-            |Find the best place for your summer here
+  .page-content
+    .homepage-hero-module
+      .video-container
+        .row.title-container
+          .col.s12.m12
+            h1.flow-text
+              | TITLE
+            h3.flow-text
+              | small description
+        .filter
+        video.fillWidth(autoplay='', loop='')
+          source(src='/static/media/home/CastAway.mp4', type='video/mp4')
+          | Your browser does not support the video tag. I suggest you upgrade your browser.
+          source(src='/static/media/home/CastAway.webm', type='video/webm')
+          | Your browser does not support the video tag. I suggest you upgrade your browser.
+        .poster.hidden
+          img(src='/static/media/home/CastAway.jpg', alt='Background video image')
+    .row.page-info.center.z-depth-3
+      .col-sm-12.col-md-12.col-centered.content-container
+        .row.center-align
+          .col.s12.m12.col.moffset-2
+            h1.title TITLE
+            h4.description-home
+              | Some longer description
+        .features
+          .row
+            .col-md-4
+              .info
+                .icon.icon-primary
+                  i.material-icons chat
+                h2.info-title Find offer
+                p
+                  | description
+            .col-md-4
+              .info
+                .icon.icon-success
+                  i.material-icons verified_user
+                h2.info-title 
+                p
+                  | description
+            .col-md-4
+              .info
+                .icon.icon-danger
+                  i.material-icons chat
+                h2.info-title Share impressions
+                p
+                  | description
+        .row.center-align
+          .col.s12.m12
+            a(href='/auth/register').waves-effect.waves-light.btn-lg
+              | Get started now
