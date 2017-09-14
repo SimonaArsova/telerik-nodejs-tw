@@ -9,7 +9,7 @@ block body
                             .panel-body.offer
                                 .title
                                     =offer.title
-                                img.img-thumbnail(src = '/' + offer.images[0])
+                                img.img-thumbnail(src = '/' + offer.images[0].path)
                                 h3
-                                    =offer.rating + " "
+                                    =offer.price + " "
                                     span.glyphicon.glyphicon-star

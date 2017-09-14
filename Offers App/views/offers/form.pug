@@ -19,14 +19,9 @@ block body
                             |Description:
                         textarea(name = "description"  rows="5").description-offer
                     p
-                        label(for="rating")
-                            |Rating:
-                        select(id="rating" name = "rating")
-                            option(value='1') 1
-                            option(value='2') 2
-                            option(value='3') 3
-                            option(value='4') 4
-                            option(value='5') 5
+                        label(for="price")
+                            |Price:
+                        input(type = "text" name = "price")
                     p
                         button.btn.btn-info
                             |Save       

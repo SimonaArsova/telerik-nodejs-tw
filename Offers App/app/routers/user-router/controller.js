@@ -26,6 +26,20 @@ class UserController {
             });
     }
 
+    editMyUserProfile(req, res) {
+        const userData = req.body;
+        const user = req.user;
+
+        user.firstname = userData.firstname;
+        user.lastname = userData.lastname;
+        user.email = userData.email;
+
+        return this.data.users.updateUserByUsername(user)
+            .then(() => {
+                return res.redirect('/user/my-profile');
+            });
+    }
+
     sendMessage(req, res) {
         const username = req.params.username;
         const author = req.user;

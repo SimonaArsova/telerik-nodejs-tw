@@ -10,6 +10,10 @@ const attachTo = (app, data) => {
         return controller.getMyUserProfile(req, res);
     });
 
+    app.post('/user/my-profile', (req, res) => {
+        return controller.editMyUserProfile(req, res);
+    });
+
     app.get('/user/messages', (req, res) => {
         return controller.getUserMessages(req, res);
     });

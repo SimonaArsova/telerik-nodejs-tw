@@ -67,8 +67,8 @@ class OffersController {
             //     'Image link is required.').notEmpty();
             req.assert('description',
                 'Description is required.').notEmpty();
-            req.assert('rating',
-                'Rating must be a number between 1 and 5.').notEmpty().isInt();
+            req.assert('price',
+                'Price is required.').notEmpty();
 
             return req.getValidationResult()
                 .then((result) => {
@@ -97,7 +97,7 @@ class OffersController {
                                 title: dbOffer.title,
                                 images: dbOffer.images,
                                 description: dbOffer.description,
-                                rating: dbOffer.rating,
+                                price: dbOffer.price,
                             });
 
                             return Promise.all([
