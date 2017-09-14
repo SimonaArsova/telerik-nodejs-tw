@@ -13,12 +13,12 @@ const attachTo = (app, data) => {
         return controller.getUserMessages(req, res);
     });
 
-    app.get('/user/:username', (req, res) => {
-        return controller.getOtherUserProfile(req, res);
-    });
-
     app.post('/user/:username/messages', (req, res) => {
         return controller.sendMessage(req, res);
+    });
+
+    app.get('/user/:username', (req, res) => {
+        return controller.getOtherUserProfile(req, res);
     });
 };
 

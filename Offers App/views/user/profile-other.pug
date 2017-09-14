@@ -4,7 +4,7 @@ block body
         .col-lg-3.col-sm-6
             .card.hovercard
                 .cardheader
-                    if context.offers.length > 0
+                    if context.offers
                         img(src= '/' + context.offers[0].images[0].path, alt="")
                     else 
                         img(src="http://thewallpaper.co/wp-content/uploads/2016/10/Summer-Sea-Star-Fish-Wallpapers.jpg", alt="")
@@ -54,7 +54,7 @@ block body
                     =context.username
                 .panel-body
                     ul
-                        if context.offers.length > 0
+                        if context.offers
                             each offer in context.offers
                                 li.li-offer
                                     .col-md-2.offer-user

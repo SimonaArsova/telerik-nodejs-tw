@@ -30,10 +30,14 @@ class UserController {
         const username = req.params.username;
         const author = req.user;
         const sentMessage = req.body.message;
+        const d = new Date();
 
         const message = {
             author: author.username,
+            authorPicture: author.picture,
             text: sentMessage,
+            receiver: username,
+            date: d.toLocaleString(),
         };
 
         return this.data.users.findByUsername(username)

@@ -209,7 +209,7 @@ class OffersController {
                         req.user.username, filePath
                     );
 
-                    return res.redirect('/my-profile');
+                    return res.redirect('/user/my-profile');
                 });
             });
     }
