@@ -34,6 +34,7 @@ class OffersController {
         const id = req.params.id;
         return this.data.offers.findById(id)
             .then((offer) => {
+                console.log(offer);
                 return res.render('offers/description',
                     {
                         context: offer || [],

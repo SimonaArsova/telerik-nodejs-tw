@@ -1,67 +1,141 @@
 extends ../_shared/_master
 block body
-    h1.title-des
-        =context.title
-    div.container-description
-        #myCarousel.carousel.slide(data-ride='carousel')
-            ol.carousel-indicators
-                li.active(data-target='#myCarousel', data-slide-to='0')
-                li(data-target='#myCarousel', data-slide-to='1')
-                li(data-target='#myCarousel', data-slide-to='2')
-
-            .carousel-inner
-                    .item.active
-                        img(src = '/' + context.images[0].path, alt='img1')
-                    if context.images[1]
-                        .item
-                            img(src = '/' + context.images[1].path, alt='img2')
-                    if context.images[2]
-                        .item
-                            img(src = '/' + context.images[3].path, alt='img3')        
-                    a.left.carousel-control(href='#myCarousel', data-slide='prev')
-                        span.glyphicon.glyphicon-chevron-left
-                        span.sr-only Previous
-                    a.right.carousel-control(href='#myCarousel', data-slide='next')
-                        span.glyphicon.glyphicon-chevron-right
-                        span.sr-only Next
-        div.author
-            h2
-                |Author: 
+  .wrapper
+    .outher
+      .container-description
+        #carouselExampleControls.carousel.slide(data-ride='carousel')
+          .carousel-inner(role='listbox')
+            .carousel-item.active
+              img.d-block.img-fluid.carousel-image(src='/' + context.images[0].path, alt='First slide')
+            if context.images[1]
+              .carousel-item
+                img.d-block.img-fluid.carousel-image(src='/' + context.images[1].path, alt='Second slide')
+            if context.images[2 ]
+              .carousel-item
+                img.d-block.img-fluid.carousel-image(src='/' + context.images[2].path, alt='Third slide')
+          a.carousel-control-prev(href='#carouselExampleControls', role='button', data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+          a.carousel-control-next(href='#carouselExampleControls', role='button', data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
+        .descr
+          h1.title-des 
+            =context.title
+          h3
+            =context.price + " BGN"
+      .footer
+        .description-div
+          h2.line-offset
+            | Author:
+          h4.offset 
             if user.username != context.user.username
-                a(href="/user/"+ context.user.username)
-                    =context.user.username
+              a(href="/user/"+ context.user.username)
+                =context.user.username
             else
-                div
-                    =context.user.username
-        div.descr
-            h2
-                |Description: 
-            h4
-                =context.description
-        div.rating
-            h2
-                |Price: 
-            h4
-                =context.price + "  BGN" 
-        div.comments
-            h2
-                |Comments:
+              div
+                =context.user.username
+        .description-div
+          hr
+          h2.line-offset
+            | Description:
+          h4.offset 
+            =context.description
         if context.comments
-            each comment in context.comments
-                div
-                    div.user-data
-                        img.img-rounded#comment-image(src=comment.picture)
-                        div.user-comment
-                            =comment.comment
-                    a.user(href="/user/"+ comment.user)
-                        =comment.user + ":"
-        div
-            button.btn.btn-info.comment-btn
-                |Add comment
-        div.comment
+          .comments-container-div
+            hr
+            .comments-container
+              h2 Comments:
+              ul#comments-list.comments-list
+                each comment in context.comments
+                  li
+                    .comment-main-level
+                      .comment-avatar
+                        img(src='/' + comment.picture.path, alt='')
+                      .comment-box
+                        .comment-head
+                          h6.comment-name.by-author 
+                            =comment.user
+                          i.fa.fa-comment
+                        .comment-content 
+                          =comment.comment
+          button.btn.comment-btn
+            |Add comment
+          div.comment
             form(action="/offers/"+context._id method = "POST")
-                label(for="comment")
-                    |Comment:
-                input(required type = "text" name = "comment")
+              label(for="comment")
+                |Comment:
+              textarea.comment-input(name = "comment"  rows="3")
+              div
                 button.btn.btn-info
-                            |Save   
+                  |Save   
+
+
+
+//- extends ../_shared/_master
+//- block body
+//-     h1.title-des
+//-         =context.title
+//-     div.container-description
+//-         #myCarousel.carousel.slide(data-ride='carousel')
+//-             ol.carousel-indicators
+//-                 li.active(data-target='#myCarousel', data-slide-to='0')
+//-                 li(data-target='#myCarousel', data-slide-to='1')
+//-                 li(data-target='#myCarousel', data-slide-to='2')
+
+//-             .carousel-inner
+//-                     .item.active
+//-                         img(src = '/' + context.images[0].path, alt='img1')
+//-                     if context.images[1]
+//-                         .item
+//-                             img(src = '/' + context.images[1].path, alt='img2')
+//-                     if context.images[2]
+//-                         .item
+//-                             img(src = '/' + context.images[3].path, alt='img3')        
+//-                     a.left.carousel-control(href='#myCarousel', data-slide='prev')
+//-                         span.glyphicon.glyphicon-chevron-left
+//-                         span.sr-only Previous
+//-                     a.right.carousel-control(href='#myCarousel', data-slide='next')
+//-                         span.glyphicon.glyphicon-chevron-right
+//-                         span.sr-only Next
+//-         div.author
+//-             h2
+//-                 |Author: 
+//-             if user.username != context.user.username
+//-                 a(href="/user/"+ context.user.username)
+//-                     =context.user.username
+//-             else
+//-                 div
+//-                     =context.user.username
+//-         div.descr
+//-             h2
+//-                 |Description: 
+//-             h4
+//-                 =context.description
+//-         div.rating
+//-             h2
+//-                 |Price: 
+//-             h4
+//-                 =context.price + "  BGN" 
+//-         div.comments
+//-             h2
+//-                 |Comments:
+//-         if context.comments
+//-             each comment in context.comments
+//-                 div
+//-                     div.user-data
+//-                         img.img-rounded#comment-image(src='/' + comment.picture.path)
+//-                         div.user-comment
+//-                             =comment.comment
+//-                     a.user(href="/user/"+ comment.user)
+//-                         =comment.user + ":"
+//-         div
+//-             button.btn.btn-info.comment-btn
+//-                 |Add comment
+//-         div.comment
+//-             form(action="/offers/"+context._id method = "POST")
+//-                 label(for="comment")
+//-                     |Comment:
+//-                 input(required type = "text" name = "comment")
+//-                 button.btn.btn-info
+//-                             |Save   
