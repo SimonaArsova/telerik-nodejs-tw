@@ -1,6 +1,3 @@
-const multer = require('multer');
-const path = require('path');
-
 class OffersController {
     constructor(data) {
         this.data = data;
@@ -34,7 +31,6 @@ class OffersController {
         const id = req.params.id;
         return this.data.offers.findById(id)
             .then((offer) => {
-                console.log(offer);
                 return res.render('offers/description',
                     {
                         context: offer || [],
@@ -146,11 +142,7 @@ class OffersController {
                     });
             });
     }
-
-    getUpload(req, res) {
-        return res.render('user/picture');
-    }
-
+        
     updateAvatar(req, res, uploadPicture) {
         uploadPicture(req, res, (err) => {
             const username = req.params.username;

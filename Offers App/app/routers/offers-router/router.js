@@ -42,10 +42,6 @@ const attachTo = (app, data) => {
         return controller.getAll(req, res);
     });
 
-    app.get('/api/upload', (req, res) =>{
-       return controller.getUpload(req, res);
-    });
-
     app.post('/api/my-profile/edit/:username/avatar', (req, res) =>{
        return controller.updateAvatar(req, res, uploadPicture);
     });
