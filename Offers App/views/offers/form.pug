@@ -4,25 +4,25 @@ block body
     .offers-body.form
         .panel.panel-default.col-md-6
             .panel-body.form
-                form(action="/offers" method = "POST" enctype="multipart/form-data")
+                form(name="createOffer" action="/offers" method="POST" enctype="multipart/form-data" onsubmit="return validateOffersForm()")
                     p
                         label(for="title")
                             |Title:
-                        input(type = "text" name = "title")
+                        input(type="text" name="title" required)
                     p
-                        label(for="Image")
+                        label(for="image")
                             |Images:
-                        input.input-image(type="file" name="image" id="file" class="form-control" multiple="multiple")
+                        input.input-image(type="file" accept="image/*" name="image" id="file" class="form-control" multiple="multiple" required)
                         div(id="imgContainer" class="col-sm-12")
                     p
                         label(for="description")
                             |Description:
-                        textarea(name = "description"  rows="5").description-offer
+                        textarea(name = "description" rows="5" required).description-offer
                     p
                         label(for="price")
                             |Price:
-                        input(type = "text" name = "price")
+                        input(type="number" name="price" required)
                     p
-                        button.btn.btn-info
+                        button.btn.btn-info(type="submit")
                             |Save       
     script(src='/static/js/show-image.js')

@@ -1,9 +1,10 @@
 extends ../_shared/_master
 block body
+  include ../errors/all
   main
   .container
     h1.page-header Edit Profile
-    form.row(method='post' action='/user/my-profile')
+    form.row(name="userDetails" method='post' action='/user/my-profile' onsubmit="return validateUserUpdate()")
       // left column
       .col-md-4.col-sm-6.col-xs-12
         .text-center
@@ -24,19 +25,19 @@ block body
           .form-group
             label.col-lg-3.control-label(for = "firstname") First name
             .col-lg-8
-              input.form-control(required='', value=context.firstname, type='text' name = "firstname")
+              input.form-control(required value=context.firstname, type='text' name = "firstname")
           .form-group
             label.col-lg-3.control-label(for = "lastname") Last name:
             .col-lg-8
-              input.form-control(required='', value=context.lastname, type='text' name = "lastname")
+              input.form-control(required value=context.lastname, type='text' name = "lastname")
           .form-group
             label.col-lg-3.control-label(for = "email") Email:
             .col-lg-8
-              input.form-control(required='', value=context.email, type='text' name = "email")
+              input.form-control(required value=context.email, type='text' name = "email")
           .form-group
             label.col-md-3.control-label
             .col-md-8
-              button.btn.btn-info 
+              button.btn.btn-info(type="submit")
                 |Save Changes 
               span
               input.btn.btn-default(value='Cancel', type='reset')

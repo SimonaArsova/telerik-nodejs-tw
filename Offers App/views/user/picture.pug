@@ -8,6 +8,6 @@ div#myModal.modal.fade(role="dialog")
                         | Upload photo
                 div.modal-body
                     form#uploadForm(enctype='multipart/form-data', method='post')
-                        input(type='file', name='picture', value='Choose photo')                        
+                        input(type='file', accept="image/*", name='picture', value='Choose photo' required)                        
                         div.modal-footer
                             input.btn.btn-default(type='submit', value='Upload File', name='submit')

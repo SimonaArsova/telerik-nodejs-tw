@@ -1,9 +1,11 @@
 extends ../_shared/_master
 block body
+    include ../errors/all
+
     .login-container
-            form(action='/auth/sign-in', method="POST")
+            form(name="signIn" action='/auth/sign-in', method="POST" onsubmit="return validateSignInForm()")
                 <h2 class="form-sign-in" id="sign-in-form-header">Sign in</h2>
                 input.form-control.auth-info(type="text" name="username" placeholder="Enter username")
                 input.form-control.auth-info(type="password" name="password" placeholder="Enter password")
-                button.btn.btn-info
+                button.btn.btn-info(type="submit")
                     | Sign In
