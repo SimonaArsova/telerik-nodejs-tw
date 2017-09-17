@@ -10,7 +10,7 @@ block body
                         img(src="http://thewallpaper.co/wp-content/uploads/2016/10/Summer-Sea-Star-Fish-Wallpapers.jpg", alt="")
                 .avatar
                     if context.picture
-                        img(alt='', src=context.picture)
+                        img(alt='', src= '/' + context.picture.path)
                     else
                         img(src='https://cdn2.iconfinder.com/data/icons/finances/512/client-512.png', alt="")
                 .info-user
