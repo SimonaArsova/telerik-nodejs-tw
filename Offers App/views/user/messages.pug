@@ -4,7 +4,7 @@ block body
     if context.messages
         .comments-container-div
             .comments-container
-                h3
+                h2.messages-title
                     |Messages:
                 ul(id="comments-list" class="comments-list")
                     each message in context.messages

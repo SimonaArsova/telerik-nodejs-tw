@@ -5,7 +5,7 @@ mixin nav()
                 li
                     a(href='/') Home
                 li#all
-                    a(href='/offers') All places
+                    a(href='/offers') All offers
             form.navbar-form.navbar-left(action="/search", method="POST")
                 .form-group
                     input.form-control.search-input(type='text', placeholder='Search' name='value')
@@ -28,9 +28,9 @@ mixin nav()
                             li
                                 a(href='/user/my-profile') My profile
                             li
-                                a(href='/user/my-offers') My places
+                                a(href='/user/my-offers') My offers
                             li
-                                a(href='/offers/form') Add place
+                                a(href='/offers/form') Add offer
                             li
                                 form(action='/auth/sign-out' method='post')
                                     button.nav-btn
