@@ -29,9 +29,13 @@ block body
           h2.line-offset
             | Author:
           h4.offset 
-            if user.username != context.user.username
-              a(href="/user/"+ context.user.username)
-                =context.user.username
+            if user
+              if user.username != context.user.username
+                a(href="/user/"+ context.user.username)
+                  =context.user.username
+              else
+                div
+                  =context.user.username
             else
               div
                 =context.user.username
@@ -59,17 +63,17 @@ block body
                           i.fa.fa-comment
                         .comment-content 
                           =comment.comment
-        button.btn.comment-btn
-          |Add comment
-        div.comment
-          form(action="/offers/"+context._id method = "POST")
-            label(for="comment")
-              |Comment:
-            textarea.comment-input(name = "comment"  rows="3")
-            div
-              button.btn.btn-info
-                |Save   
-
+        if user
+          button.btn.comment-btn
+            |Add comment
+          div.comment
+            form(action="/offers/"+context._id method = "POST")
+              label(for="comment")
+                |Comment:
+              textarea.comment-input(name = "comment"  rows="3")
+              div
+                button.btn.btn-info
+                  |Save     
 
 
 //- extends ../_shared/_master
