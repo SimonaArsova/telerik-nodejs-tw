@@ -3,21 +3,25 @@ block body
   .wrapper
     .outher
       .container-description
-        #carouselExampleControls.carousel.slide(data-ride='carousel')
-          .carousel-inner(role='listbox')
-            .carousel-item.active
+        #myCarousel.carousel.slide(data-ride='carousel')
+          ol.carousel-indicators
+            li.active(data-target='#myCarousel', data-slide-to='0')
+            li(data-target='#myCarousel', data-slide-to='1')
+            li(data-target='#myCarousel', data-slide-to='2')
+          .carousel-inner
+            .item.active
               img.d-block.img-fluid.carousel-image(src='/' + context.images[0].path, alt='First slide')
             if context.images[1]
-              .carousel-item
+              .item
                 img.d-block.img-fluid.carousel-image(src='/' + context.images[1].path, alt='Second slide')
-            if context.images[2 ]
-              .carousel-item
+            if context.images[2]
+              .item
                 img.d-block.img-fluid.carousel-image(src='/' + context.images[2].path, alt='Third slide')
-          a.carousel-control-prev(href='#carouselExampleControls', role='button', data-slide='prev')
-            span.carousel-control-prev-icon(aria-hidden='true')
+          a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+            span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
             span.sr-only Previous
-          a.carousel-control-next(href='#carouselExampleControls', role='button', data-slide='next')
-            span.carousel-control-next-icon(aria-hidden='true')
+          a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+            span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
             span.sr-only Next
         .descr
           h1.title-des 
