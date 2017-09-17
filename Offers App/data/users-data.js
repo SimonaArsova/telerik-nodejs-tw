@@ -24,9 +24,13 @@ class UsersData extends BaseData {
             .findOne({ username: username, password: password });
     }
 
-   removeOfferByOfferId(username, id) {
+    findUserBy(query) {
+        return this.collection.findOne(query);
+    }
+
+    removeOfferByOfferId(username, id) {
         return this.collection.update(
-            { },
+            {},
             { $pull: { offers: { _id: new ObjectID(id) } } },
             { multi: true }
         );

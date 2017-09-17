@@ -54,9 +54,12 @@ describe('/users tests', () => {
             request(app)
                 .post('/auth/sign-up')
                 .field('username', 'username')
+                .field('firstname', 'firstname')
+                .field('lastname', 'lastname')
                 .field('password', 'password')
-                .field('password-confirm', 'password')
+                .field('passwordConfirm', 'password')
                 .field('email', 'abv@abv.bg')
+                .field('picture', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMvw9YL-DivF60XP4FOOQMEFA8r1ABCcgR_ZOk7TbUds-LK6dni9Oqfg')
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -77,8 +80,10 @@ describe('/users tests', () => {
             request(app)
                 .post('/auth/sign-up')
                 .field('username', 'user')
+                .field('firstname', 'firstname')
+                .field('lastname', 'lastname')
                 .field('password', 'password')
-                .field('password-confirm', '123')
+                .field('passwordConfirm', '123')
                 .field('email', 'abv@abv.bg')
                 .end((err, res) => {
                     if (err) {
@@ -88,7 +93,7 @@ describe('/users tests', () => {
                         .post('/auth/sign-up')
                         .field('username', 'user')
                         .field('password', 'password')
-                        .field('password-confirm', '123')
+                        .field('passwordConfirm', '123')
                         .field('email', 'abv@abv.bg')
                         .end((e, r) => {
                             if (e) {
@@ -111,9 +116,12 @@ describe('/users tests', () => {
             request(app)
                 .post('/auth/sign-up')
                 .field('username', '')
+                .field('firstname', 'firstname')
+                .field('lastname', 'lastname')
                 .field('password', 'password')
-                .field('password-confirm', 'password')
+                .field('passwordConfirm', 'password')
                 .field('email', 'abv@abv.bg')
+                .field('picture', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMvw9YL-DivF60XP4FOOQMEFA8r1ABCcgR_ZOk7TbUds-LK6dni9Oqfg')
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -126,9 +134,12 @@ describe('/users tests', () => {
             request(app)
                 .post('/auth/sign-up')
                 .field('username', 'username')
+                .field('firstname', 'firstname')
+                .field('lastname', 'lastname')
                 .field('password', 'pas')
-                .field('password-confirm', 'pas')
+                .field('passwordConfirm', 'pas')
                 .field('email', 'abv@abv.bg')
+                .field('picture', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMvw9YL-DivF60XP4FOOQMEFA8r1ABCcgR_ZOk7TbUds-LK6dni9Oqfg')
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -141,9 +152,12 @@ describe('/users tests', () => {
             request(app)
                 .post('/auth/sign-up')
                 .field('username', 'username')
+                .field('firstname', 'firstname')
+                .field('lastname', 'lastname')
                 .field('password', 'pasword')
-                .field('password-confirm', 'pass123')
+                .field('passwordConfirm', 'pass123')
                 .field('email', 'abv@abv.bg')
+                .field('picture', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMvw9YL-DivF60XP4FOOQMEFA8r1ABCcgR_ZOk7TbUds-LK6dni9Oqfg')
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -156,9 +170,46 @@ describe('/users tests', () => {
             request(app)
                 .post('/auth/sign-up')
                 .field('username', 'username')
+                .field('firstname', 'firstname')
+                .field('lastname', 'lastname')
                 .field('password', 'pasword')
-                .field('password-confirm', 'password')
+                .field('passwordConfirm', 'password')
                 .field('email', 'abv')
+                .field('picture', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMvw9YL-DivF60XP4FOOQMEFA8r1ABCcgR_ZOk7TbUds-LK6dni9Oqfg')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+        it('expect to return 400 if firstname is empty', (done) => {
+            request(app)
+                .post('/auth/sign-up')
+                .field('username', 'username')
+                .field('firstname', '')
+                .field('lastname', 'lastname')
+                .field('password', 'pasword')
+                .field('passwordConfirm', 'password')
+                .field('email', 'abv')
+                .field('picture', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMvw9YL-DivF60XP4FOOQMEFA8r1ABCcgR_ZOk7TbUds-LK6dni9Oqfg')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+        it('expect to return 400 if lastname is empty', (done) => {
+            request(app)
+                .post('/auth/sign-up')
+                .field('username', 'username')
+                .field('firstname', 'firstname')
+                .field('lastname', '')
+                .field('password', 'pasword')
+                .field('passwordConfirm', 'password')
+                .field('email', 'abv')
+                .field('picture', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMvw9YL-DivF60XP4FOOQMEFA8r1ABCcgR_ZOk7TbUds-LK6dni9Oqfg')
                 .end((err, res) => {
                     if (err) {
                         return done(err);

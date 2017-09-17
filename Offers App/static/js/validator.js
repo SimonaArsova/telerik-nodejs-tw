@@ -25,7 +25,7 @@ function validateSignUpForm() {
         errors.push('Passsword must be at least 6 symbols.');
     }
 
-    const passwordConfirm = document.forms["signUp"]["password-confirm"].value;
+    const passwordConfirm = document.forms["signUp"]["passwordConfirm"].value;
 
     if (passwordConfirm !== password) {
         errors.push('Passwords do not match.');

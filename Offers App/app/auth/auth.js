@@ -4,15 +4,25 @@ const { Strategy } = require('passport-local');
 const MongoStore = require('connect-mongo')(session);
 
 const config = require('../../config');
+const hashGenerator = require('./hash-generator');
 
 const applyTo = (app, data) => {
     passport.use(new Strategy((username, password, done) => {
-        data.users.login(username, password)
-          .then((user) => {
-                if (user) {
-                    return done(null, user);
+         data.users.findUserBy({ username: username })
+            .then((foundUser) => {
+                if (!foundUser) {
+                    return done(null, false,
+                        { message: 'User with that name does not exist. ' });
                 }
-                return done(null, false);
+
+                return hashGenerator.verify(password, foundUser.password)
+                    .then((correctPassword) => {
+                        if (correctPassword) {
+                            return done(null, foundUser);
+                        }
+                        return done(null, false,
+                            { message: 'Incorrect password.' });
+                    });
             });
     }));
 

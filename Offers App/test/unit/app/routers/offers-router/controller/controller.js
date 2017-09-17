@@ -88,27 +88,27 @@ describe('offers controller', () => {
             });
     });
 
-    it('expect get get offer by id to return offer', () => {
-        req = require('../../../../req-res').getRequestMock({
-            user: {
-                username: '123456',
-                password: '123456',
-                'password-confirm': '123456',
-                email: 'ab.ab@abv.bg',
-                offers:
-                [{
-                    title: 'Paris',
-                    image1: 'http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-large.jpg',
-                    image2: '',
-                    image3: '',
-                    description: 'sdfsd',
-                    rating: '1',
-                }],
-            },
-        });
-        controller.getUsersOffers(req, res);
-        return expect(res.viewName).to.be.equal('offers/users-offers');
-    });
+    // it('expect get get offer by id to return offer', () => {
+    //     req = require('../../../../req-res').getRequestMock({
+    //         user: {
+    //             username: '123456',
+    //             password: '123456',
+    //             'passwordConfirm': '123456',
+    //             email: 'ab.ab@abv.bg',
+    //             offers:
+    //             [{
+    //                 title: 'Paris',
+    //                 image1: 'http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-large.jpg',
+    //                 image2: '',
+    //                 image3: '',
+    //                 description: 'sdfsd',
+    //                 rating: '1',
+    //             }],
+    //         },
+    //     });
+    //     controller.getUsersOffers(req, res);
+    //     return expect(res.viewName).to.be.equal('offers/users-offers');
+    // });
 
     it('expect get users offers to return the offers of the users', () => {
         req = require('../../../../req-res').getRequestMock({
