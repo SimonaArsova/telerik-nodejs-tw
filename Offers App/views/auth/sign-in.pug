@@ -5,7 +5,7 @@ block body
     .login-container
             form(name="signIn" action='/auth/sign-in', method="POST" onsubmit="return validateSignInForm()")
                 <h2 class="form-sign-in" id="sign-in-form-header">Sign in</h2>
-                input.form-control.auth-info(type="text" name="username" placeholder="Enter username")
-                input.form-control.auth-info(type="password" name="password" placeholder="Enter password")
+                input.form-control.auth-info(type="text" name="username" placeholder="Enter username" required)
+                input.form-control.auth-info(type="password" name="password" placeholder="Enter password" required)
                 button.btn.btn-info(type="submit")
                     | Sign In

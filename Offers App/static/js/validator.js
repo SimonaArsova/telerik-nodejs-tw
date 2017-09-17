@@ -65,7 +65,7 @@ function validateSignInForm() {
         errors.push('Invalid username.');
     }
 
-    const password = document.forms["signUp"]["password"].value;
+    const password = document.forms["signIn"]["password"].value;
 
     if (password.length < 6) {
         errors.push('invalid password.');
@@ -151,33 +151,6 @@ function validateOffersForm() {
             $('<p></p>').appendTo('#validation-errors').text(errors[i]);
         }
 
-        $('#validation-errors').addClass('alert alert-danger');
-        return false;
-    } else {
-        return true;
-    }
-};
-
-function validateEventUpdate(data) {
-    let errors = [];
-
-    if (!data.date.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) {
-        errors.push('Date is not correct.');
-    }
-
-    if (data.time === '') {
-        errors.push('Time is required.');
-    }
-
-    if (data.place === '') {
-        errors.push('Place is required.');
-    }
-
-    if (errors.length > 0) {
-        const errorsText = errors.join('\n');
-        for (let i = 0; i < errors.length; i++) {
-            $('<p></p>').appendTo('#validation-errors').text(errors[i]);
-        }
         $('#validation-errors').addClass('alert alert-danger');
         return false;
     } else {
