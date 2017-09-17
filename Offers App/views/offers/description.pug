@@ -59,16 +59,16 @@ block body
                           i.fa.fa-comment
                         .comment-content 
                           =comment.comment
-          button.btn.comment-btn
-            |Add comment
-          div.comment
-            form(action="/offers/"+context._id method = "POST")
-              label(for="comment")
-                |Comment:
-              textarea.comment-input(name = "comment"  rows="3")
-              div
-                button.btn.btn-info
-                  |Save   
+        button.btn.comment-btn
+          |Add comment
+        div.comment
+          form(action="/offers/"+context._id method = "POST")
+            label(for="comment")
+              |Comment:
+            textarea.comment-input(name = "comment"  rows="3")
+            div
+              button.btn.btn-info
+                |Save   
 
 
 

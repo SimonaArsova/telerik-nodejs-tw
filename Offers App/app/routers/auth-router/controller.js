@@ -22,9 +22,9 @@ class AuthController {
         req.assert('username',
             'Username must be between 6 and 25 symbols.').len(6, 25);
         req.assert('username',
-            'First name must be between 3 and 20 symbols.').len(6, 25);
+            'First name must be between 3 and 20 symbols.').len(3, 20);
         req.assert('username',
-            'Last name must be between 3 and 20 symbols.').len(6, 25);
+            'Last name must be between 3 and 20 symbols.').len(3, 20);
         req.assert('password',
             'Passsword must be at least 6 symbols.').len(6);
         req.assert('password-confirm', 
