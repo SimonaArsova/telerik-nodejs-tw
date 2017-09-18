@@ -9,6 +9,8 @@ const init = (data) => {
     require('./routers')
     .attachTo(app, data);
 
+    app.use((req, res) => res.redirect('/'));
+
     return Promise.resolve(app);
 };
 
