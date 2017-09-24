@@ -248,7 +248,15 @@ body {
 }
 
 .no-messages{
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 50px;
+}
+
+.messages-img{
+	width:150px;
+	height: 150px;
 }
 
 .comments-container-div {

@@ -42,5 +42,7 @@ block body
                                         .comment-content
                                             =message.text
     else
-        div.no-messages
-            |No messages yet
+        div.no-messages 
+            img.messages-img(src="../../static/media/Messages-icon.png", alt="")
+            p
+                | No messages yet...
