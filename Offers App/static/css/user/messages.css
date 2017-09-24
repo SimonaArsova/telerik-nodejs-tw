@@ -268,3 +268,18 @@ body {
 	margin-bottom: 10px;
 	color: #33a1d5;
 }
+
+#myModal2{
+	padding:10px;
+	align-items: center;
+	justify-content: center;
+}
+
+.message-content-modal{
+	padding: 20px;
+}
+
+#message-btn{
+	padding: 5px;
+	margin:10px;
+}
