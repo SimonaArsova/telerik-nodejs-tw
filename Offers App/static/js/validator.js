@@ -68,7 +68,7 @@ function validateSignInForm() {
     const password = document.forms["signIn"]["password"].value;
 
     if (password.length < 6) {
-        errors.push('invalid password.');
+        errors.push('Invalid password.');
     }
 
     if (errors.length > 0) {
