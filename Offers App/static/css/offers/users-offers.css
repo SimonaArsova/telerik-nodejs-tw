@@ -40,3 +40,9 @@ li{
     height: 50px;
     margin-top: 40px;
 }
+
+.offer-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

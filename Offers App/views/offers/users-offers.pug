@@ -1,19 +1,19 @@
 extends ../_shared/_master
 block body
     if context.length        
-        ul
+        ul.offer-panel
             each offer in context
-                .panel.panel-default.col-md-5
+                .panel.panel-default.col-lg-6.col-md-8.col-sm-10.col-xs-12
                     .panel-body
                         li
                             .my-offer
                                 a(href="/offers/" + offer._id).a
-                                    img(src= '/' + offer.images[0].path, alt="img1").min.img-thumbnail
+                                    img(src= '/' + offer.images[0].path, alt="img1").min.img-thumbnail.col-md-4.col-sm-4.col-xs-3
                                     h3
                                         =offer.title
                                     h3.info-user-offer
                                         =offer.price + " BGN"
-                                button.btn.btn-info.remove-offer-btn
+                                button.btn.btn-info.remove-offer-btn.col-md-3.col-sm-4
                                     |Remove offer
     else
         div.no-offers 
