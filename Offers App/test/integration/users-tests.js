@@ -28,6 +28,20 @@ describe('/users tests', () => {
         });
     });
 
+    describe('GET /auth/sign-in', () => {
+        it('expect to return 200', (done) => {
+            request(app)
+                .get('/auth/sign-in')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+    });
+
     describe('POST /auth/sign-out', () => {
         it('expect to redirect /', (done) => {
             request(app)
@@ -79,7 +93,7 @@ describe('/users tests', () => {
         it('expect to load /auth/sign-up if user already exists', (done) => {
             request(app)
                 .post('/auth/sign-up')
-                .field('username', 'user')
+                .field('username', 'username')
                 .field('firstname', 'firstname')
                 .field('lastname', 'lastname')
                 .field('password', 'password')
@@ -91,7 +105,7 @@ describe('/users tests', () => {
                     }
                     return request(app)
                         .post('/auth/sign-up')
-                        .field('username', 'user')
+                        .field('username', 'username')
                         .field('password', 'password')
                         .field('passwordConfirm', '123')
                         .field('email', 'abv@abv.bg')
@@ -111,6 +125,41 @@ describe('/users tests', () => {
                         });
                 });
         });
+
+        it('expect to load / when user sign-in', (done) => {
+            request(app)
+                .post('/auth/sign-up')
+                .field('username', 'username')
+                .field('firstname', 'firstname')
+                .field('lastname', 'lastname')
+                .field('password', 'password')
+                .field('passwordConfirm', 'password')
+                .field('email', 'abv@abv.bg')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return request(app)
+                        .post('/auth/sign-in')
+                        .field('username', 'username')
+                        .field('password', 'password')
+                        .end((e, r) => {
+                            if (e) {
+                                return done(e);
+                            }
+                            return request(app)
+                                .get('/')
+                                .expect(200)
+                                .end((er, re) => {
+                                    if (er) {
+                                        return done(er);
+                                    }
+                                    return done();
+                                });
+                        });
+                });
+        });
+
 
         it('expect to return 400 if  username is incorrect', (done) => {
             request(app)
